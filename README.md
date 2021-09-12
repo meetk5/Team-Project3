@@ -1,7 +1,7 @@
 # Team-Project3
-####Website Title: Restaurant Finder NYC
+### Website Title: Restaurant Finder NYC
 
-#####Tagline for the website: Eat Good in your Neighborhood
+#### Tagline for the website: Eat Good in your Neighborhood
 **Brief description of the project:**
 To create a web-based site that will provide  information about all the restaurants in NYC (location and cuisine served) and the  violations associated with it based on recent inspection result (2020 – 2021) from  New York City Department of Health and Mental Hygiene 
 
