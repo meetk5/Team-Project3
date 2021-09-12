@@ -15,8 +15,8 @@ List of Data sources: DOHMH New York City Restaurant Inspection Results Dataset 
 - HTML/ CSS (Bootstrap), 
 - SQL/ Postgres DB,
 - APIs,
-- Quick , 
-- Excel 
+- Quick DBD, 
+- Excel.
   
 **Steps:**
 - GitHub repo creation
@@ -32,7 +32,7 @@ Flask app (Python and JavaScript)
 - Use JavaScript libraries to create all the three visualizations and interactive dashboard
 - Presentation 
 - Readme 
-- 
+
 ## **Team Members**
 - [Jay Dhruv](https://github.com/jaybdhruv)
 - [Meet K Kaur Sahni](https://github.com/meetk5)
