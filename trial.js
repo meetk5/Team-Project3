@@ -25,8 +25,6 @@ let trace1 = {
     }]
 }
 
-
-
 const config = {
     type: 'doughnut',
     data: trace1,
