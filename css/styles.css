@@ -8,3 +8,13 @@ body {
     background-color: #EDB458;
     /* background-color: #D4D4AA; */
 }
+
+.container {
+    margin-top: 3%;
+    
+}
+
+.box {
+    background-color: #EBF5DF; 
+    min-height: 500px;
+}
