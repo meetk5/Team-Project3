@@ -1,0 +1,70 @@
+.bg-navbar {
+    background: #E8871E;
+}
+
+body {
+    /* background-color: #EBF5DF; */
+    /* background-color: #BAD4AA; */
+    /* background-color: #EDB458; */
+    /* background-color: #D4D4AA; */
+    background-color: #fcec8e;
+}
+
+
+
+.container {
+    margin-top: 3%;
+    
+}
+
+.box {
+    background-color: #EBF5DF; 
+    min-height: 500px;
+}
+h1 {
+    text-align: center;
+    /* color:rgb(218, 152, 76); */
+    /* background-color: black; */
+}
+
+h3 {
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+  
+    
+}
+
+IMG.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* max-width: 100%;
+    height: auto; */
+   
+ }
+
+
+IMG.panel {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%; 
+}
+
+/* html body {
+    background-color: rgb(187, 114, 55)
+} */
+
+
+.row1 {
+    background-image: url("../images/rest2.png");
+}
+
+.headerlink {
+
+}
+
+
