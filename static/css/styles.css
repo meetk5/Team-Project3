@@ -8,6 +8,7 @@ body {
     /* background-color: #EDB458; */
     /* background-color: #D4D4AA; */
     background-color: #fcec8e;
+    /* background-color: whitesmoke; */
 }
 
 
@@ -21,28 +22,35 @@ body {
     background-color: #EBF5DF; 
     min-height: 500px;
 }
-h1 {
-    text-align: center;
+/* h1 { */
+    /* text-align: center; */
     /* color:rgb(218, 152, 76); */
     /* background-color: black; */
-}
+/* } */
 
 h3 {
     text-align: center;
 }
 
-h4 {
+
+h5.landing {
     text-align: center;
+    color: white;    
+}
+
+h6.landing {
+    text-align: center;
+    color: white;
   
-    
 }
 
 IMG.displayed {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    /* max-width: 100%;
-    height: auto; */
+    margin-top: 2%;
+    max-width: 600px;
+    /* height: auto; */ 
    
  }
 
@@ -60,11 +68,17 @@ IMG.panel {
 
 
 .row1 {
-    background-image: url("../images/rest2.png");
-}
-
-.headerlink {
-
+    background-image: url("../../images/rest2.png");
 }
 
 
+
+
+body.background {
+    
+    background-image: url("../../images/landingbackground2.jpg");
+    background-color: #cccccc;
+    max-width: 100%;
+    height: auto;
+    
+}
