@@ -60,6 +60,8 @@ IMG.panel {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2%; 
+    padding-top: 2%;
+    /* margin-top: 2% */
 }
 
 /* html body {
@@ -77,8 +79,21 @@ IMG.panel {
 body.background {
     
     background-image: url("../../images/landingbackground2.jpg");
-    background-color: #cccccc;
+    background-color: brown;
     max-width: 100%;
     height: auto;
     
 }
+
+p.copyright {
+    color: grey;
+    text-align: center;
+    vertical-align: baseline;
+    margin-top: 3%;
+    
+}
+
+/* a.simple {
+    text-decoration: none;
+} */
+
