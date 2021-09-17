@@ -1,5 +1,5 @@
 
-d3.json("cleanDb_Aug_31cuisines.json").then(function (data) {
+d3.json("../Data/cleanDb_Aug_31cuisines.json").then(function (data) {
   // console.log(Object.values(data));
 
   let restaurants = [];
