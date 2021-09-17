@@ -179,6 +179,15 @@ d3.json("./Data/cleaned_db_Aug_31_new.json").then((data) => {
     console.log(Object.keys(bronxCounts))
     console.log(Object.values(bronxCounts)); 
 
+    let bronxViolations = samples.filter(function(violation){
+        return violation.BORO =="Bronx"
+    });
+    console.log(bronxViolations)
+    let bronxViolationCounts= getcounts(bronxViolations, "VIOLATION_DESC");
+    console.log("bronxviolationCounts", bronxViolationCounts)
+    console.log(Object.keys(bronxViolationCounts))
+    console.log(Object.values(bronxViolationCounts)); 
+
     var pieChart = [{
             values: Object.values(bronxCounts),
             labels: Object.keys(bronxCounts),

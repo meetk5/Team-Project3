@@ -54,7 +54,32 @@ function plotting(nameID){
     console.log("info", info)
     let display = d3.select("#sample-metadata");
    display.html("");
+   let bronxViolations = samples.filter(function(violation){
+    return violation.BORO =="Bronx"
+});
+  console.log(bronxViolations)
+  let bronxViolationCounts= getcounts(bronxViolations, "VIOLATION_DESC");
+  console.log("bronxviolationCounts", bronxViolationCounts)
+  console.log(Object.keys(bronxViolationCounts))
+  console.log(Object.values(bronxViolationCounts)); 
+  let bronxViolationResults = Object.keys(bronxViolationCounts).map(f=>({type:f, count:bronxViolationCounts[f]}))
+ console.log("bronxViolationResults",bronxViolationResults)
+// let sortedByCuisines = Object.keys(manhattanResults).sort((a, b) => b.count - a.count);
+// console.log("sortedbyCuisines", sortedByCuisines)
+let bronxViolationSortedByValues = Object.values(bronxViolationResults).sort((a, b) => b.count - a.count);
+console.log("bronxViolationsortedbyvalues", bronxViolationSortedByValues)
+// Slice the first 10 objects for plotting
+bronxViolationSlicedData = bronxViolationSortedByValues.slice(0, 5);
+console.log("bronxViolationSlicedData", bronxViolationSlicedData)
+bronxViolationDisplay=[]
+    for (var s = 0; s < bronxViolationSlicedData.length; s++) {
+        bronxViolationDisplay.push(bronxViolationSlicedData[s].type);
+    }
+    console.log("bronxdisplay", bronxViolationDisplay)
 //loop to get metadata info into the demographics box
+Object.entries(bronxViolationDisplay).forEach(([a,b])=>{
+  display.append("h5").text(`${a}:${b}`); 
+});
 var obj = {};
 samples.forEach(function(value){
 //console.log(value)
@@ -75,27 +100,6 @@ let barLabels = barInfo[0]
 //console.log(barInfo)
  console.log("barLabels", barLabels)
 
- 
-//  let bc = results["type"];
-//  function filterByKey(key){
-//    return Object.create({[key]:bc[key]});
-//  }
-//  console.log(filterByKey(bc, key))
-//  for(let i=0; i < results.length; i++)
-// let x = barInfo["type"]
-// console.log("x", x)
-// let typeRestaurants = [];
-//  results.forEach(function(nums){
-//   if (typeRestaurants[nums["type"]]) {
-//     typeRestaurants[nums["type"]]++;
-//   }
-//   else {
-//     typeRestaurants[nums["type"]] = 1;
-//   } 
-// }) 
-// console.log(typeRestaurants)
-//  })
-
   
 // var object = {};
 // samples.forEach(function(numbers) {
@@ -114,10 +118,7 @@ let barLabels = barInfo[0]
 //   console.log(object)  
 // })
    
-Object.entries(name).forEach(([a,b])=>{
-    display.append("h5").text(`${a}:${b}`);
-    
-  });
+
   
 let manhattanSamples = samples.filter(function(citation){
   return citation.BORO =="Manhattan"
@@ -147,10 +148,141 @@ reversedData = slicedData.reverse();
    };
    let barchart = [trace1];
    let labels = {
-     title: "Top Ten Most Popular Cuisines in each Boro"
+     title: "Top Ten Most Popular Cuisines in Manhattan"
    };
  //reference id="bar" from html
   Plotly.newPlot("topten", barchart, labels);
+
+  let queensSamples = samples.filter(function(citation){
+    return citation.BORO =="Queens"
+  });
+  console.log("QueensSamples", queensSamples)
+  
+  let queensCounts= getcounts(queensSamples, "CUISINE_DESCRIPTION");
+  console.log("queensCounts", queensCounts)
+  console.log(Object.keys(queensCounts))
+   let queensResults = Object.keys(queensCounts).map(f=>({type:f, count:queensCounts[f]}))
+   console.log("queensResults", queensResults)
+  // let sortedByCuisines = Object.keys(manhattanResults).sort((a, b) => b.count - a.count);
+  // console.log("sortedbyCuisines", sortedByCuisines)
+  let queensSortedByValues = Object.values(queensResults).sort((a, b) => b.count - a.count);
+  console.log("queenssortedbyvalues", queensSortedByValues)
+  // Slice the first 10 objects for plotting
+  queensSlicedData = queensSortedByValues.slice(0, 10);
+  
+  // Reverse the array to accommodate Plotly's defaults
+  queensReversedData = queensSlicedData.reverse();
+    let trace2 = {
+      x: queensReversedData.map(object => object.count),
+      y: queensReversedData.map(object => object.type),
+      text: queensReversedData.map(object => object.type),
+      type: "bar",
+      orientation: "h",
+     };
+     let barchart1 = [trace2];
+     let labels2 = {
+       title: "Top Ten Most Popular Cuisines in Queens"
+     };
+   //reference id="bar" from html
+    Plotly.newPlot("toptenqueens", barchart1, labels2);
+
+    let bronxSamples = samples.filter(function(citation){
+      return citation.BORO =="Bronx"
+    });
+    console.log("bronxSamples", bronxSamples)
+    
+    let bronxCounts= getcounts(bronxSamples, "CUISINE_DESCRIPTION");
+    console.log("bronxCounts", bronxCounts)
+    console.log(Object.keys(bronxCounts))
+     let bronxResults = Object.keys(bronxCounts).map(f=>({type:f, count:bronxCounts[f]}))
+     console.log("bronxResults", bronxResults)
+    // let sortedByCuisines = Object.keys(manhattanResults).sort((a, b) => b.count - a.count);
+    // console.log("sortedbyCuisines", sortedByCuisines)
+    let bronxSortedByValues = Object.values(bronxResults).sort((a, b) => b.count - a.count);
+    console.log("bronxsortedbyvalues", bronxSortedByValues)
+    // Slice the first 10 objects for plotting
+    bronxSlicedData = bronxSortedByValues.slice(0, 10);
+    
+    // Reverse the array to accommodate Plotly's defaults
+    bronxReversedData = bronxSlicedData.reverse();
+      let trace3 = {
+        x: bronxReversedData.map(object => object.count),
+        y: bronxReversedData.map(object => object.type),
+        text: bronxReversedData.map(object => object.type),
+        type: "bar",
+        orientation: "h",
+       };
+       let barchart2 = [trace3];
+       let labels3 = {
+         title: "Top Ten Most Popular Cuisines in the Bronx"
+       };
+     //reference id="bar" from html
+      Plotly.newPlot("toptenbronx", barchart2, labels3);
+
+      let brooklynSamples = samples.filter(function(citation){
+        return citation.BORO =="Brooklyn"
+      });
+      console.log("brooklynSamples", brooklynSamples)
+      
+      let brooklynCounts= getcounts(brooklynSamples, "CUISINE_DESCRIPTION");
+      console.log("brooklynCounts", brooklynCounts)
+      console.log(Object.keys(brooklynCounts))
+       let brooklynResults = Object.keys(brooklynCounts).map(f=>({type:f, count:brooklynCounts[f]}))
+       console.log("brooklynResults", brooklynResults)
+      // let sortedByCuisines = Object.keys(manhattanResults).sort((a, b) => b.count - a.count);
+      // console.log("sortedbyCuisines", sortedByCuisines)
+      let brooklynSortedByValues = Object.values(brooklynResults).sort((a, b) => b.count - a.count);
+      console.log("brooklynsortedbyvalues", brooklynSortedByValues)
+      // Slice the first 10 objects for plotting
+      brooklynSlicedData = brooklynSortedByValues.slice(0, 10);
+      
+      // Reverse the array to accommodate Plotly's defaults
+      brooklynReversedData = brooklynSlicedData.reverse();
+        let trace4 = {
+          x: brooklynReversedData.map(object => object.count),
+          y: brooklynReversedData.map(object => object.type),
+          text: brooklynReversedData.map(object => object.type),
+          type: "bar",
+          orientation: "h",
+         };
+         let barchart3 = [trace4];
+         let labels4 = {
+           title: "Top Ten Most Popular Cuisines in the Brooklyn"
+         };
+       //reference id="bar" from html
+        Plotly.newPlot("toptenbrooklyn", barchart3, labels4);
+        let statenIslandSamples = samples.filter(function(citation){
+          return citation.BORO =="Staten Island"
+        });
+        console.log("brooklynSamples", brooklynSamples)
+        
+        let statenIslandCounts= getcounts(statenIslandSamples, "CUISINE_DESCRIPTION");
+        console.log("statenIslandCounts", statenIslandCounts)
+        console.log(Object.keys(statenIslandCounts))
+         let statenIslandResults = Object.keys(statenIslandCounts).map(f=>({type:f, count:statenIslandCounts[f]}))
+         console.log("statenIslandResults", statenIslandResults)
+        // let sortedByCuisines = Object.keys(manhattanResults).sort((a, b) => b.count - a.count);
+        // console.log("sortedbyCuisines", sortedByCuisines)
+        let statenIslandSortedByValues = Object.values(statenIslandResults).sort((a, b) => b.count - a.count);
+        console.log("statenIslandsortedbyvalues", statenIslandSortedByValues)
+        // Slice the first 10 objects for plotting
+        statenIslandSlicedData = statenIslandSortedByValues.slice(0, 10);
+        
+        // Reverse the array to accommodate Plotly's defaults
+        statenIslandReversedData = statenIslandSlicedData.reverse();
+          let trace5 = {
+            x: statenIslandReversedData.map(object => object.count),
+            y: statenIslandReversedData.map(object => object.type),
+            text: statenIslandReversedData.map(object => object.type),
+            type: "bar",
+            orientation: "h",
+           };
+           let barchart4 = [trace5];
+           let labels5 = {
+             title: "Top Ten Most Popular Cuisines in the Staten Island"
+           };
+         //reference id="bar" from html
+          Plotly.newPlot("toptenstatenisland", barchart4, labels5);
 });
 };
 
@@ -177,18 +309,36 @@ function init(){
     console.log("boroNames", boroNames)
     let boroInfo = Object.keys(boroNames).map(e=>({boro:e, count:boroNames[e]}))
     console.log("boroInfo", boroInfo)
-
+    var obj = {};
+sampleNames.forEach(function(value){
+//console.log(value)
+if (obj[value["CUISINE_DESCRIPTION"]]) {
+    obj[value["CUISINE_DESCRIPTION"]]++;
+  }
+  else {
+    obj[value["CUISINE_DESCRIPTION"]] = 1;
+  } 
+});
+    let results = Object.keys(obj).map(e=>({type:e, count:obj[e]}))
     cities=[]
     for (var j = 0; j < boroInfo.length; j++) {
       cities.push(boroInfo[j].boro);
   }
+  restaurantsTypes=[]
+    for (var i = 0; i < results.length; i++) {
+        restaurantsTypes.push(results[i].type);
+    }
      
 //parse data to get info wanted (names array)
    //get reference from select data append to options
       let dropDown = d3. select("#selDataset");
               cities.forEach((c)=>{
               dropDown.append("option").text(c).property("value",c)
-  })
+  });
+  let dropDown2 = d3. select("#selDataset2");
+  restaurantsTypes.forEach((o)=>{
+  dropDown2.append("option").text(o).property("value",o)
+})
     
     
      //see mymetadata and plotting for the first sample
