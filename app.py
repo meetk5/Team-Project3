@@ -4,12 +4,13 @@ import numpy as np
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
+import config
 
 from flask import Flask, jsonify, render_template, redirect
 
 # Database Setup
 database = 'restaurant_db'
-engine = create_engine(f'postgresql://postgres:postgres@localhost:5432/{database}')
+engine = create_engine(f'postgresql://postgres:{config.password}@localhost:5432/{database}')
 
 # reflect an existing database into a new model
 Base = automap_base()
@@ -48,8 +49,8 @@ def cuisines():
         cuisine_dict["cuisine_description"] = cuisines
         cuisine_info.append(cuisine_dict)
 
-    # return jsonify(cuisine_info)
-    return render_template("cuisine.html", nyc_cuisines = jsonify(cuisine_info))
+    return jsonify(cuisine_info)
+    #return render_template("cuisine.html", nyc_cuisines = jsonify(cuisine_info))
 
 
 if __name__ == '__main__':
