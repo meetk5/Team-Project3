@@ -1,5 +1,5 @@
 
-d3.json("../Data/violations_4fields.json").then(function (data) {
+d3.json("../Data/violations_5fields.json").then(function (data) {
     console.log(Object.values(data));
 
     let restaurants = [];
@@ -8,6 +8,7 @@ d3.json("../Data/violations_4fields.json").then(function (data) {
     let criticalFlag = [];
 
     for (i = 0; i < (Object.keys(data).length); i++) {
+        // console.log(typeof (data[i]["VIOLATION_DESC"]));
         restaurants.push(data[i]["RESTAURANT"]);
         violationDesc.push(data[i]["VIOLATION_DESC"]);
         violationCode.push(data[i]["VIOLATION_CODE"]);
