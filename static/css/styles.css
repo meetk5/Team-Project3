@@ -5,9 +5,9 @@
 body {
     /* background-color: #EBF5DF; */
     /* background-color: #BAD4AA; */
-    /* background-color: #EDB458; */
+    background-color: #EDB458;
     /* background-color: #D4D4AA; */
-    background-color: #fcec8e;
+    /* background-color: #fcec8e; */
     /* background-color: whitesmoke; */
 }
 
@@ -32,6 +32,15 @@ h3 {
     text-align: center;
 }
 
+h4.landing {
+    text-align: center;
+    color: white;    
+}
+
+h4.landing:hover {
+  
+    color: #ffeac7;  
+}
 
 h5.landing {
     text-align: center;
@@ -61,12 +70,27 @@ IMG.panel {
     margin-right: auto;
     margin-bottom: 2%; 
     padding-top: 2%;
-    /* margin-top: 2% */
+    width: 150px;
+    height: 150px;
+    z-index: 2;
+    
+
 }
 
-/* html body {
-    background-color: rgb(187, 114, 55)
-} */
+IMG.panel:hover {
+  transform: scale(1.2);
+    
+
+}
+
+
+
+
+
+
+
+
+
 
 
 .row1 {
@@ -79,9 +103,10 @@ IMG.panel {
 body.background {
     
     background-image: url("../../images/landingbackground2.jpg");
-    background-color: brown;
+    background-color: #EDB458;
     max-width: 100%;
     height: auto;
+    z-index: -1;
     
 }
 
@@ -93,7 +118,4 @@ p.copyright {
     
 }
 
-/* a.simple {
-    text-decoration: none;
-} */
 
