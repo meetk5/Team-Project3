@@ -39,6 +39,7 @@ d3.json("../Data/cleanDb_Aug_31cuisines.json").then(function (data) {
       }
     });
     let counts = Object.values(dict);
+    console.log(dict);
     console.log(counts);
     return {counts, unique};
   };
