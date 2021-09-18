@@ -5,6 +5,13 @@ d3.json(url1).then(function(data){
     console.log(data);
 });
 
+url2 = `/violations`
+
+d3.json(url2).then(function(data){
+    console.log(data);
+});
+
+
 /*d3.json(url).then(function(data) {
   console.log(data);
   console.log("camis_array",data[0].camis)
