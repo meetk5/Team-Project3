@@ -28,18 +28,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="visualization2.html">Visualziations2</a>
               </li>
-              <!--li class="nav-item">
-                <a class="nav-link" href="US_weather.html">US Weather</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plots</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown01">
-                  <a class="dropdown-item" href="max_temp.html">Max Temperature</a>
-                  <a class="dropdown-item" href="humidity.html">Humidity</a>
-                  <a class="dropdown-item" href="cloudiness.html">Cloudiness</a>
-                  <a class="dropdown-item" href="wind_speed.html">Wind Speed</a>
-                </div>
-              </li!-->
+              
             </ul>
           </div>
         </div>
@@ -47,41 +36,45 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
-        <h1>NYC Restaurant Inspections</h1>
+        <h1>NYC Cuisines by Boro</h1>
         <p>Use the interactive charts below to explore the dataset</p>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-3">
         <div class="well">
           <h4>Boro Eats</h4>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select><br>
-          <h4>Types of Cuisine</h4>
-          <select id="selDataset2" onchange="optionChanged(this.value)"></select>
-        </div>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Top Violations</h3>
-          </div>
-          <div id="sample-metadata" class="panel-body"></div>
+          <select id="selDataset" onchange="optionChanged(this.value)"></select>
         </div>
       </div>
-      <div class="col-md-5">
+      
+      <!--div class="col-md-5">
         <div id="sunburst"></div>
-      </div>
-      <div class="col-md-12">
-        <div id="gauge"></div>
-      </div>
+      </div-->
+      
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="pie"></div>
+  </div>
+</div>
     <div class="row">
       <div class="col-md-6">
         <div id="borochart"></div>
         </div>
-        <div class="col-md-6">
+        <!--div class="panel panel-primary"-->
+          <div class="col-md-6">
+        <div class="panel-heading">
+          <h3 class="panel-title">Top 5 Violations in this Boro</h3>
+        </div>
+        <div id="sample-metadata" class="panel-body"></div>
+        </div>
+        <!--/div-->
+        <!--div class="col-md-6">
           <div id="toptenqueens"></div>
+          </div-->
           </div>
-          </div>
-   <div class="row">
+   <!--div class="row">
       <div class="col-md-6">
             <div id="toptenbronx"></div>
             </div>
@@ -93,15 +86,15 @@
         <div class="col-md-6">
               <div id="toptenstatenisland"></div>
                   </div>
-                  </div>
+                  </div-->
     <div class="row">
-      <div class="col-md-12">
-        <div id="bubble"></div>
-        <div class="row">
-          <div class="col-md-12">
-            <div id="pie"></div>
-      </div>
-    </div>
+      <!--div class="col-md-12">
+        <div id="bubble"></div-->
+        
+        <div class="col-md-12">
+          <div id="gauge"></div>
+        </div>
+       
   </div>
 
   <script src="https://d3js.org/d3.v5.min.js"></script>

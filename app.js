@@ -52,34 +52,34 @@ function plotting(nameID){
     console.log("index#",name)
     let info = name.CUISINE_DESCRIPTION
     console.log("info", info)
-    let display = d3.select("#sample-metadata");
-   display.html("");
-   let bronxViolations = samples.filter(function(violation){
-    return violation.BORO =="Bronx"
-});
-  console.log(bronxViolations)
-  let bronxViolationCounts= getcounts(bronxViolations, "VIOLATION_DESC");
-  console.log("bronxviolationCounts", bronxViolationCounts)
-  console.log(Object.keys(bronxViolationCounts))
-  console.log(Object.values(bronxViolationCounts)); 
-  let bronxViolationResults = Object.keys(bronxViolationCounts).map(f=>({type:f, count:bronxViolationCounts[f]}))
- console.log("bronxViolationResults",bronxViolationResults)
-// let sortedByCuisines = Object.keys(manhattanResults).sort((a, b) => b.count - a.count);
-// console.log("sortedbyCuisines", sortedByCuisines)
-let bronxViolationSortedByValues = Object.values(bronxViolationResults).sort((a, b) => b.count - a.count);
-console.log("bronxViolationsortedbyvalues", bronxViolationSortedByValues)
-// Slice the first 10 objects for plotting
-bronxViolationSlicedData = bronxViolationSortedByValues.slice(0, 5);
-console.log("bronxViolationSlicedData", bronxViolationSlicedData)
-bronxViolationDisplay=[]
-    for (var s = 0; s < bronxViolationSlicedData.length; s++) {
-        bronxViolationDisplay.push(bronxViolationSlicedData[s].type);
-    }
-    console.log("bronxdisplay", bronxViolationDisplay)
-//loop to get metadata info into the demographics box
-Object.entries(bronxViolationDisplay).forEach(([a,b])=>{
-  display.append("h5").text(`${a}:${b}`); 
-});
+//     let display = d3.select("#sample-metadata");
+//    display.html("");
+//    let bronxViolations = samples.filter(function(violation){
+//     return violation.BORO =="Bronx"
+// });
+//   console.log(bronxViolations)
+//   let bronxViolationCounts= getcounts(bronxViolations, "VIOLATION_DESC");
+//   console.log("bronxviolationCounts", bronxViolationCounts)
+//   console.log(Object.keys(bronxViolationCounts))
+//   console.log(Object.values(bronxViolationCounts)); 
+//   let bronxViolationResults = Object.keys(bronxViolationCounts).map(f=>({type:f, count:bronxViolationCounts[f]}))
+//  console.log("bronxViolationResults",bronxViolationResults)
+// // let sortedByCuisines = Object.keys(manhattanResults).sort((a, b) => b.count - a.count);
+// // console.log("sortedbyCuisines", sortedByCuisines)
+// let bronxViolationSortedByValues = Object.values(bronxViolationResults).sort((a, b) => b.count - a.count);
+// console.log("bronxViolationsortedbyvalues", bronxViolationSortedByValues)
+// // Slice the first 10 objects for plotting
+// bronxViolationSlicedData = bronxViolationSortedByValues.slice(0, 5);
+// console.log("bronxViolationSlicedData", bronxViolationSlicedData)
+// bronxViolationDisplay=[]
+//     for (var s = 0; s < bronxViolationSlicedData.length; s++) {
+//         bronxViolationDisplay.push(bronxViolationSlicedData[s].type);
+//     }
+//     console.log("bronxdisplay", bronxViolationDisplay)
+// //loop to get metadata info into the demographics box
+// Object.entries(bronxViolationDisplay).forEach(([a,b])=>{
+//   display.append("h5").text(`${a}:${b}`); 
+// });
 var obj = {};
 samples.forEach(function(value){
 //console.log(value)
@@ -286,7 +286,7 @@ let barLabels = barInfo[0]
 });
 };
 
-plotting(0);
+//plotting(0);
 
 
 function init(){
@@ -343,8 +343,8 @@ if (obj[value["CUISINE_DESCRIPTION"]]) {
     
     
      //see mymetadata and plotting for the first sample
-     let samplePlot = cities[0];
-     plotting(samplePlot);
+     //let samplePlot = cities[0];
+     pieChart("Manhattan");
      
 
 });

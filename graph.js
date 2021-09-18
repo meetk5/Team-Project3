@@ -328,7 +328,7 @@ function pieChart(boro) {
             "titlefont": { "size": 24 }
         }]
         var layout = {
-            height: 500,
+            height: 1000,
             width: 1000,
             grid: { rows: 2, columns: 2 },
         };
@@ -358,6 +358,32 @@ function pieChart(boro) {
         };
         //reference id="bar" from html
         Plotly.newPlot("borochart", barchart4, labels5);
+
+        let display = d3.select("#sample-metadata");
+        display.html("");
+        
+       let boroViolationCounts= getcounts(boroSamples, "VIOLATION_DESC");
+       console.log("boroviolationCounts", boroViolationCounts)
+       console.log(Object.keys(boroViolationCounts))
+       console.log(Object.values(boroViolationCounts)); 
+       let boroViolationResults = Object.keys(boroViolationCounts).map(f=>({type:f, count:boroViolationCounts[f]}))
+      console.log("boroViolationResults",boroViolationResults)
+     // let sortedByCuisines = Object.keys(manhattanResults).sort((a, b) => b.count - a.count);
+     // console.log("sortedbyCuisines", sortedByCuisines)
+     let boroViolationSortedByValues = Object.values(boroViolationResults).sort((a, b) => b.count - a.count);
+     console.log("boroViolationsortedbyvalues", boroViolationSortedByValues)
+     // Slice the first 10 objects for plotting
+     boroViolationSlicedData = boroViolationSortedByValues.slice(0, 5);
+     console.log("boroViolationSlicedData", boroViolationSlicedData)
+     boroViolationDisplay=[]
+         for (var s = 0; s < boroViolationSlicedData.length; s++) {
+             boroViolationDisplay.push(boroViolationSlicedData[s].type);
+         }
+         console.log("borodisplay", boroViolationDisplay)
+     //loop to get metadata info into the demographics box
+     Object.entries(boroViolationDisplay).forEach(([a,b])=>{
+       display.append("h5").text(`${a}:${b}`); 
+     });
     });
 
 }
