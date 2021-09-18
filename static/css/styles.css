@@ -5,10 +5,11 @@
 body {
     /* background-color: #EBF5DF; */
     /* background-color: #BAD4AA; */
-    background-color: #EDB458;
+    /* background-color: #EDB458; */
     /* background-color: #D4D4AA; */
     /* background-color: #fcec8e; */
     /* background-color: whitesmoke; */
+    background-color: white;
 }
 
 
@@ -53,15 +54,13 @@ h6.landing {
   
 }
 
-IMG.displayed {
+/* IMG.displayed {
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2%;
     max-width: 600px;
-    /* height: auto; */ 
-   
- }
+     } */
 
 
 IMG.panel {
@@ -84,26 +83,17 @@ IMG.panel:hover {
 }
 
 
-
-
-
-
-
-
-
-
-
-.row1 {
+/* .row1 {
     background-image: url("../../images/rest2.png");
 }
-
+ */
 
 
 
 body.background {
     
     background-image: url("../../images/landingbackground2.jpg");
-    background-color: #EDB458;
+    background-color: brown;
     max-width: 100%;
     height: auto;
     z-index: -1;

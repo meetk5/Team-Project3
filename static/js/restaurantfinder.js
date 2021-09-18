@@ -1,6 +1,6 @@
 
 function createMarkers() {    
-  d3.json("../static/data/cleanDb_Aug_31cuisines.json").then(function (data) {
+  d3.json("../data/cleanDb_Aug_31cuisines.json").then(function (data) {
   //console.log(data)      
     //let restaurants=data;
     let restaurantMarkers=[];
@@ -16,7 +16,7 @@ function createMarkers() {
         restaurantMarkers.push(restaurantMarker);   
         //console.log(restaurantMarkers)   
       }; 
-    console.log(restaurantMarkers)  
+    // console.log(restaurantMarkers)  
     createMap(L.layerGroup(restaurantMarkers)); 
 
   });
