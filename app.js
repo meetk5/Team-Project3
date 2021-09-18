@@ -351,6 +351,7 @@ if (obj[value["CUISINE_DESCRIPTION"]]) {
 };
  function optionChanged(boro) {
    pieChart(boro);
+  
  
  };
 

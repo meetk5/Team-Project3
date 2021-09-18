@@ -384,9 +384,12 @@ function pieChart(boro) {
      Object.entries(boroViolationDisplay).forEach(([a,b])=>{
        display.append("h5").text(`${a}:${b}`); 
      });
+     
     });
 
 }
+
+//restaurants("Bakery")
 
 //pieChart("Manhattan")
 function getcounts(dataArray, myParam) {
@@ -402,24 +405,8 @@ function getcounts(dataArray, myParam) {
         }
     });
     return finalArray;
-    //console.log("boro", finalArray)
-    //     let numBoros = Object.keys(finalArray).map(e => ({ boro: e, count: finalArray[e] }));
-    //     console.log("numboro", numBoros);
-    //     boroTypes = []
-    //     for (var i = 0; i < numBoros.length; i++) {
-    //         boroTypes.push(numBoros[i].boro);
-    //     }
-    //     console.log("boroTypes", boroTypes)
-    //     let boroCount = {};
-    //     for (var i = 0; i < boroTypes.length; i++) {
-    //         boroCount[boroTypes[i]] = 1 + (boroCount[boroTypes[i]] || 0);
-    //     }
-    //     console.log(Object.keys(boroCount))
-    //     let boroCu = Object.keys(boroCount).map(function (key) {
-    //         return boroCount[key];
-    //     })
-    //     console.log("boroCu", boroCu)
+    
 }
 
-    // 
+    
 
