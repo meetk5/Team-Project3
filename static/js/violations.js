@@ -1,25 +1,35 @@
 
-d3.json("../Data/violations_5fields.json").then(function (data) {
-    console.log(Object.keys(data).length);
+d3.json("../Data/violations.json").then(function (data) {
+    console.log(Object.entries(data[0]));
 
     let len = Object.keys(data).length;
+
+    // let manhattandata = Object.fromEntries(
+    //     Object.entries(data).filter(([key, value]) => value === "Manhattan"));
+    // console.log(manhattandata);
 
     let restaurants = [];
     let violationCode = [];
     let violationDesc = [];
     let criticalFlag = [];
+    let boros = [];
+    let manhattandata;
 
     for (i = 0; i < len; i++) {
+        manhattandata = Object.fromEntries(Object.entries(data[i]).filter(([key, value]) => value === "Manhattan"));
         restaurants.push(data[i]["DBA"]);
         violationDesc.push(data[i]["VIOLATION DESCRIPTION"]);
         violationCode.push(data[i]["VIOLATION CODE"]);
         criticalFlag.push(data[i]["CRITICAL FLAG"]);
+        boros.push(data[i]["BORO"])
     };
 
+    console.log("Manhattan Data", manhattandata);
     console.log("Restaurants", restaurants);
     console.log("Violation Desc", violationDesc);
     console.log("Violation Codes", violationCode);
     console.log("Critical Flag", criticalFlag);
+    console.log("Boro", boros);
 
     function unique(param) {
         let unique = [... new Set(param)];
@@ -73,8 +83,8 @@ d3.json("../Data/violations_5fields.json").then(function (data) {
 
     let top15codes = code.slice(0, 15);
     console.log(top15codes[0][0]);
-    
-    let top15desc = desc.slice(0,15);
+
+    let top15desc = desc.slice(0, 15);
     console.log(top15desc);
 
     let tracebar = {
@@ -92,9 +102,9 @@ d3.json("../Data/violations_5fields.json").then(function (data) {
             family: 'Gravitas One',
             size: 14
         },
-        title: "Violation deatils among NYC restaurants",
-        xaxis: {title: "Violations"},
-        yaxis: {title: "Nos. of Violations"}
+        title: "Violation details among NYC restaurants",
+        xaxis: { title: "Violations" },
+        yaxis: { title: "Nos. of Violations" }
     };
 
     Plotly.newPlot("bar", traceData1, layout);
@@ -103,10 +113,10 @@ d3.json("../Data/violations_5fields.json").then(function (data) {
     tbody.html("");
     let rows = tbody.append("tr");
 
-    for (k=0; k < top15codes.length; k++){
+    for (k = 0; k < top15codes.length; k++) {
         let rows = tbody.append("tr");
         rows.append("td").text(top15codes[k][0]);
-        rows.append("tr").append("td").text(top15desc[k][0])
+        rows.append("td").text(top15desc[k][0])
     };
 
 

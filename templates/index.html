@@ -14,29 +14,39 @@
 </head>
 
 <body>
-  <div id="myDiv"></div>
-  <div id="bubble"></div>
-  <div id="bar"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <h5>Select Boro</h5>
+        <select id="selDataset" onchange="optionChanged(this.value)"></select>
+      </div>
 
-  <table class="table table-striped align-middle">
-    <thead>
-      <tr>
-        <th><b>Violation Codes</b></th>
-        <th><b>Violation Description</b></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-    <!-- <tfoot>
-          <tr>
-            <td colspan="4">Q1 Employee Sales By Region</td>
-          </tr>
-        </tfoot> -->
-  </table>
+      <div class="col-md-10 col-sm-10">
+        <!-- <div id="myDiv"></div>
+      <div id="bubble"></div> -->
+        <div id="bar"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <table class="table table-striped align-middle table-bordered">
+          <thead>
+            <tr>
+              <th><b>Violation Codes</b></th>
+              <th><b>Violation Description</b></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
 
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
