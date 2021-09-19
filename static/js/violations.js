@@ -1,153 +1,175 @@
 
-d3.json("../Data/violations.json").then(function (data) {
-    console.log(Object.entries(data[0]));
+function visualization(boro) {
+    d3.json("../Data/violations.json").then(function (data) {
+        console.log(Object.keys(data).length);
 
-    let len = Object.keys(data).length;
+        let len = Object.keys(data).length;
 
-    // let manhattandata = Object.fromEntries(
-    //     Object.entries(data).filter(([key, value]) => value === "Manhattan"));
-    // console.log(manhattandata);
+        let restaurants = [];
+        let violationCode = [];
+        let violationDesc = [];
+        let criticalFlag = [];
+        let boros = [];
+        let restaurantdata = [];
 
-    let restaurants = [];
-    let violationCode = [];
-    let violationDesc = [];
-    let criticalFlag = [];
-    let boros = [];
-    let manhattandata;
+        for (i = 0; i < len; i++) {
+            restaurantdata.push(Object.values(data)[i]);
+        };
 
-    for (i = 0; i < len; i++) {
-        manhattandata = Object.fromEntries(Object.entries(data[i]).filter(([key, value]) => value === "Manhattan"));
-        restaurants.push(data[i]["DBA"]);
-        violationDesc.push(data[i]["VIOLATION DESCRIPTION"]);
-        violationCode.push(data[i]["VIOLATION CODE"]);
-        criticalFlag.push(data[i]["CRITICAL FLAG"]);
-        boros.push(data[i]["BORO"])
-    };
+        borodata.push(restaurantdata.filter(function (element) {
+            return element.BORO === "Queens";
+        }));
+        console.log(borodata[0]);
 
-    console.log("Manhattan Data", manhattandata);
-    console.log("Restaurants", restaurants);
-    console.log("Violation Desc", violationDesc);
-    console.log("Violation Codes", violationCode);
-    console.log("Critical Flag", criticalFlag);
-    console.log("Boro", boros);
+        let borolen = borodata[0].length;
 
-    function unique(param) {
-        let unique = [... new Set(param)];
-        console.log("Unique", unique);
-        return unique;
-    }
+        for (j = 0; j < borolen; j++) {
+            restaurants.push(borodata[0][j]["DBA"]);
+            violationDesc.push(borodata[0][j]["VIOLATION DESCRIPTION"]);
+            violationCode.push(borodata[0][j]["VIOLATION CODE"]);
+            criticalFlag.push(borodata[0][j]["CRITICAL FLAG"]);
+        };
 
-    function count(param) {
-        let dict = {};
-        // count1 = 0;
+        console.log("Restaurants", restaurants);
+        console.log("Violation Desc", violationDesc);
+        console.log("Violation Codes", violationCode);
+        console.log("Critical Flag", criticalFlag);
 
-        uniqueValues = unique(param);
+        // function unique(param) {
+        //     let unique = [... new Set(param)];
+        //     // console.log("Unique", unique);
+        //     return unique;
+        // }
 
-        uniqueValues.forEach(function (element) {
-            for (j = 0; (j < param.length); j++) {
-                if (element == param[j]) {
-                    if (dict[element]) {
-                        dict[element]++;
-                    }
-                    else {
-                        dict[element] = 1;
-                    }
-                }
-            }
-        });
-        console.log(dict);
-        return dict;
-    }
+        // function count(param) {
+        //     let dict = {};
 
-    function sort(param) {
-        var sortable = [];
+        //     uniqueValues = unique(param);
 
-        let dict = count(param);
+        //     uniqueValues.forEach(function (element) {
+        //         for (j = 0; (j < param.length); j++) {
+        //             if (element == param[j]) {
+        //                 if (dict[element]) {
+        //                     dict[element]++;
+        //                 }
+        //                 else {
+        //                     dict[element] = 1;
+        //                 }
+        //             }
+        //         }
+        //     });
+        //     console.log(dict);
+        //     return dict;
+        // }
 
-        for (var violation in dict) {
-            sortable.push([violation, dict[violation]]);
-        }
-        sortable.sort(function (a, b) {
-            return b[1] - a[1];
-        });
-        console.log("Descending Sort", sortable);
+        // function sort(param) {
+        //     var sortable = [];
 
-        return sortable;
-    }
+        //     let dict = count(param);
 
-    let code = sort(violationCode);
-    console.log("First", code);
+        //     for (var violation in dict) {
+        //         sortable.push([violation, dict[violation]]);
+        //     }
+        //     sortable.sort(function (a, b) {
+        //         return b[1] - a[1];
+        //     });
+        //     console.log("Descending Sort", sortable);
 
-    let desc = sort(violationDesc);
-    console.log("Second", desc);
+        //     return sortable;
+        // }
 
-    let top15codes = code.slice(0, 15);
-    console.log(top15codes[0][0]);
+        // let code = sort(violationCode);
 
-    let top15desc = desc.slice(0, 15);
-    console.log(top15desc);
+        // let desc = sort(violationDesc);
 
-    let tracebar = {
-        x: top15codes.map(xyz => xyz[0]),
-        y: top15codes.map(xyz => xyz[1]),
-        text: top15desc.map(xyz => xyz[0]),
-        type: "bar",
-    };
-    console.log(tracebar)
+        // let top15codes = code.slice(0, 15);
 
-    let traceData1 = [tracebar];
+        // let top15desc = desc.slice(0, 15);
+        // console.log(top15desc);
 
-    let layout = {
-        font: {
-            family: 'Gravitas One',
-            size: 14
-        },
-        title: "Violation details among NYC restaurants",
-        xaxis: { title: "Violations" },
-        yaxis: { title: "Nos. of Violations" }
-    };
+        // let tracebar = {
+        //     x: top15codes.map(xyz => xyz[0]),
+        //     y: top15codes.map(xyz => xyz[1]),
+        //     text: top15desc.map(xyz => xyz[0]),
+        //     type: "bar",
+        // };
+        // console.log(tracebar)
 
-    Plotly.newPlot("bar", traceData1, layout);
+        // let traceData1 = [tracebar];
 
-    let tbody = d3.select("tbody");
-    tbody.html("");
-    let rows = tbody.append("tr");
+        // let layout = {
+        //     font: {
+        //         family: 'Gravitas One',
+        //         size: 14
+        //     },
+        //     title: "Violation details among NYC restaurants",
+        //     xaxis: { title: "Violations" },
+        //     yaxis: { title: "Nos. of Violations" }
+        // };
 
-    for (k = 0; k < top15codes.length; k++) {
-        let rows = tbody.append("tr");
-        rows.append("td").text(top15codes[k][0]);
-        rows.append("td").text(top15desc[k][0])
-    };
+        // Plotly.newPlot("bar", traceData1, layout);
+
+        // let tbody = d3.select("tbody");
+        // tbody.html("");
+        // let rows = tbody.append("tr");
+
+        // for (k = 0; k < top15codes.length; k++) {
+        //     let rows = tbody.append("tr");
+        //     rows.append("td").text(top15codes[k][0]);
+        //     rows.append("td").text(top15desc[k][0])
+        // };
+
+        // let tracepie = {
+        //     labels: top10array.map(xyz => xyz[0]),
+        //     values: top10array.map(xyz => xyz[1]),
+        //     text: top10array.map(xyz => xyz[0]),
+        //     type: "pie"
+        // };
+        // console.log(tracepie)
+
+        // let traceData2 = [tracepie];
+
+        // let layout1 = {
+        //     font: {
+        //         family: 'Gravitas One',
+        //         size: 14
+        //     }
+        // };
+
+        // Plotly.newPlot("myDiv", traceData2, layout1);
+
+    })
+};
+
+// d3.json("../Data/violations.json").then(function (data) {
+//     console.log(Object.values(data));
+
+//     let len = Object.keys(data).length;
+//     let borodata = [];
+//     let restaurantdata = [];
+
+//     for (i = 0; i < len; i++) {
+//         restaurantdata.push(Object.values(data)[i]);
+//     };
+
+    // borodata.push(restaurantdata.filter(function (element) {
+    //     return element.BORO === "Queens";
+    // }));
+    // console.log(borodata[0].length);
+
+//     let borolen = borodata[0].length;
+
+//     let restaurants = [];
+//     // restaurants.push(borodata[0][3]["DBA"]);
+
+//     for (j = 0; j < borolen; j++) {
+//         restaurants.push(borodata[0][j]["DBA"]);
+//     };
+//     console.log(restaurants);
+
+
+// });
 
 
 
-
-
-
-
-
-
-
-
-
-    // let tracepie = {
-    //     labels: top10array.map(xyz => xyz[0]),
-    //     values: top10array.map(xyz => xyz[1]),
-    //     text: top10array.map(xyz => xyz[0]),
-    //     type: "pie"
-    // };
-    // console.log(tracepie)
-
-    // let traceData2 = [tracepie];
-
-    // let layout1 = {
-    //     font: {
-    //         family: 'Gravitas One',
-    //         size: 14
-    //     }
-    // };
-
-    // Plotly.newPlot("myDiv", traceData2, layout1);
-
-}
-);
+visualization("Brooklyn");
