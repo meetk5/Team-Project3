@@ -104,7 +104,7 @@ const sectors = [
 
 
   function restaurants(restaurantInfo){
-    d3.json("./Data/cleaned_db_Aug_31_new.json").then((data) => {
+    d3.json("../Data/cleaned_db_Aug_31_new.json").then((data) => {
         // //get samples info from samples.json
 
         let samples = data.data;
@@ -144,7 +144,7 @@ function init(){
 
 
 // //  // see dropdown
-  d3.json("./Data/cleaned_db_Aug_31_new.json").then((data) => {
+  d3.json("../Data/cleaned_db_Aug_31_new.json").then((data) => {
     let sampleNames = data.data;
     var boroNames = {};
     sampleNames.forEach(function(typeBoro){
@@ -179,25 +179,12 @@ if (obj[value["CUISINE_DESCRIPTION"]]) {
     for (var i = 0; i < results.length; i++) {
         restaurantsTypes.push(results[i].type);
     }
-    // cities.shift()
-    //  console.log("cities",cities)
-//parse data to get info wanted (names array)
-   //get reference from select data append to options
-//       let dropDown = d3. select("#selDataset");
-//               cities.forEach((c)=>{
-//               dropDown.append("option").text(c).property("value",c)
-//   });
   let dropDown2 = d3. select("#selDataset2");
   restaurantsTypes.forEach((o)=>{
   dropDown2.append("option").text(o).property("value",o)
 })
     
-    
-     //see mymetadata and plotting for the first sample
-     //let samplePlot = cities[0];
-    // pieChart("Manhattan");
-     
-
+  
 });
 };
  function optionChanged(restaurantInfo) {
