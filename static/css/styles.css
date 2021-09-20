@@ -154,3 +154,6 @@ body,
         border-bottom-color: currentColor;
         border-top: none;
       }
+      .panel2 {
+        color: yellow;
+      }
