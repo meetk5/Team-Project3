@@ -115,7 +115,7 @@ body,
     height: 100%;
     padding: 0;
     margin:0;}
-
+    
     #wheelOfFortune {
         display: inline-block;
         position: relative;
@@ -157,3 +157,4 @@ body,
       .panel2 {
         color: yellow;
       }
+   
