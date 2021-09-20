@@ -1,6 +1,6 @@
 
 function createMarkers() {    
-  d3.json("../data/cleanDb_Aug_31cuisines.json").then(function (data) {
+  d3.json("/cuisines").then(function (data) {
   //console.log(data)      
     //let restaurants=data;
     let restaurantMarkers=[];
@@ -11,8 +11,8 @@ function createMarkers() {
         let restaurant=restaurants[i];
         //console.log(restaurants)
         
-        let restaurantMarker =L.marker([restaurant.Latitude, restaurant.Longitude])
-          .bindPopup("<h3>Restaurant:" + restaurant.RESTAURANT + "<h3><h3>Cuisines:" + restaurant.CUISINE_DESCRIPTION + "<h3><h3>Phone:" + restaurant.PHONE + "</h3>");
+        let restaurantMarker =L.marker([restaurant.latitude, restaurant.longitude])
+          .bindPopup("<h3>Restaurant:" + restaurant.restaurant + "<h3><h3>Cuisines:" + restaurant.cuisine_description + "<h3><h3>Phone:" + restaurant.phone + "</h3>");
         restaurantMarkers.push(restaurantMarker);   
         //console.log(restaurantMarkers)   
       }; 

@@ -1,77 +1,23 @@
-// let dropDownCharacteristics = d3.select('#selDataset');
-
-//  //plot bar and bubble charts
-// function plotting(nameID){
-//    d3.json("../Data/cleaned_db_Aug_31_new.json").then((data)=> {
-// // //get samples info from samples.json
-
-//      let samples = data.data;
-//      console.log("ID#",samples)
-    
-// // //filtering info using names to call samples info from samples.json
-//     let name = samples.filter(object => object.index==nameID)[0];
-//     console.log("index#",name)
-//     let info = name.CUISINE_DESCRIPTION
-//     console.log("info", info)
-// //     let display = d3.select("#sample-metadata");
-// //    display.html("");
-
-// var obj = {};
-// samples.forEach(function(value){
-// //console.log(value)
-// if (obj[value["CUISINE_DESCRIPTION"]]) {
-//     obj[value["CUISINE_DESCRIPTION"]]++;
-//   }
-//   else {
-//     obj[value["CUISINE_DESCRIPTION"]] = 1;
-//   } 
-// });
-
-// console.log(obj)
-
-// let results = Object.keys(obj).map(e=>({type:e, count:obj[e]}))
-// console.log("results",results)
-// let barInfo = results.filter(ab=>ab.type)
-// let barLabels = barInfo[0]
-// //console.log(barInfo)
-//  console.log("barLabels", barLabels)
-
-  
-// // var object = {};
-// // samples.forEach(function(numbers) {
-//   restaurantsTypes=[]
-//     for (var i = 0; i < results.length; i++) {
-//         restaurantsTypes.push(results[i].type);
-//     }
-//     console.log("restTypes", restaurantsTypes);
-//     numbers = []
-//     for (var i = 0; i < results.length; i++) {
-//         numbers.push(results[i].count);
-//     }
-//     console.log("numbers", numbers);
-
-   
-// });
-// };
-
-// //plotting(0);
 
 //initializes everything when the page runs
 function init(){
  
  
 // //  // see dropdown
-  d3.json("../Data/cleaned_db_Aug_31_new.json").then((data) => {
-    let sampleNames = data.data;
+  d3.json("/cuisines").then((data) => {
+    let sampleNames = [];
+    for (var i = 0; i < data.length; i++) {
+      sampleNames.push(Object.values(data)[i]);
+  }
     var boroNames = {};
     sampleNames.forEach(function(typeBoro){
     //console.log(value)
     //loop to find same boros, if not same boro, add to object, if same add to count
-    if (boroNames[typeBoro["BORO"]]) {
-        boroNames[typeBoro["BORO"]]++;
+    if (boroNames[typeBoro["boro"]]) {
+        boroNames[typeBoro["boro"]]++;
       }
       else {
-        boroNames[typeBoro["BORO"]] = 1;
+        boroNames[typeBoro["boro"]] = 1;
       } 
     })
 
@@ -83,11 +29,11 @@ function init(){
 sampleNames.forEach(function(value){
 //console.log(value)
 //loop to find same cuisines, if not same add to object if same add to count
-if (obj[value["CUISINE_DESCRIPTION"]]) {
-    obj[value["CUISINE_DESCRIPTION"]]++;
+if (obj[value["cuisine_description"]]) {
+    obj[value["cuisine_description"]]++;
   }
   else {
-    obj[value["CUISINE_DESCRIPTION"]] = 1;
+    obj[value["cuisine_description"]] = 1;
   } 
 });
 //create obj list to have 2 components, one called type and one called count

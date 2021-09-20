@@ -1,14 +1,16 @@
 //get static bar chart
-d3.json("../Data/cleaned_db_Aug_31_new.json").then((data) => {
+d3.json("/cuisines").then((data) => {
     // //get samples info from json file
 
-    let samples = data.data;
-    console.log("ID#", samples)
+    let samples = [];
+    for (var i = 0; i < data.length; i++) {
+      samples.push(Object.values(data)[i]);
+  }
 
     // //filtering info to call samples info from json file
-    let name = samples.filter(object => object.index)[0];
+    let name = samples.filter(object => object.boro)[0];
     console.log("#", name)
-    let info = name["CUISINE_DESCRIPTION"]
+    let info = name["cuisine_description"]
     console.log("in", info)
     //reference the #sample-metadata from html to tell where the infomation goes
     let display = d3.select("#sample-metadata");
@@ -17,11 +19,11 @@ d3.json("../Data/cleaned_db_Aug_31_new.json").then((data) => {
     var obj = {};
     samples.forEach(function (value) {
         //console.log(value)
-        if (obj[value["CUISINE_DESCRIPTION"]]) {
-            obj[value["CUISINE_DESCRIPTION"]]++;
+        if (obj[value["cuisine_description"]]) {
+            obj[value["cuisine_description"]]++;
         }
         else {
-            obj[value["CUISINE_DESCRIPTION"]] = 1;
+            obj[value["cuisine_description"]] = 1;
         }
     })
     console.log(obj)
@@ -41,16 +43,18 @@ d3.json("../Data/cleaned_db_Aug_31_new.json").then((data) => {
         numbers.push(results[i].count);
     }
     console.log("numbers", numbers)
-    d3.json("../Data/cleaned_db_Aug_31_new.json").then((data) => {
+    d3.json("/cuisines").then((data) => {
         // //get samples info from json file
 
-        let samples = data.data;
-        console.log("ID#", samples)
+        let samples = [];
+        for (var i = 0; i < data.length; i++) {
+         samples.push(Object.values(data)[i]);
+  }
 
         // //filtering info to call samples info from json file
-        let name = samples.filter(object => object.index)[0];
+        let name = samples.filter(object => object.boro)[0];
         console.log("#", name)
-        let info = name["CUISINE_DESCRIPTION"]
+        let info = name["cuisine_description"]
         console.log("in", info)
         let display = d3.select("#sample-metadata");
         display.html("");
@@ -58,11 +62,11 @@ d3.json("../Data/cleaned_db_Aug_31_new.json").then((data) => {
         var obj = {};
         samples.forEach(function (value) {
             //console.log(value)
-            if (obj[value["CUISINE_DESCRIPTION"]]) {
-                obj[value["CUISINE_DESCRIPTION"]]++;
+            if (obj[value["cuisine_description"]]) {
+                obj[value["cuisine_description"]]++;
             }
             else {
-                obj[value["CUISINE_DESCRIPTION"]] = 1;
+                obj[value["cuisine_description"]] = 1;
             }
         })
         console.log("obj", obj)
@@ -99,20 +103,24 @@ d3.json("../Data/cleaned_db_Aug_31_new.json").then((data) => {
 })
 
 function pieChart(boro) {
-    d3.json("../Data/cleaned_db_Aug_31_new.json").then((data) => {
+    d3.json("/cuisines").then((data) => {
         // //get samples info from json file
 
-        let samples = data.data;
+        let samples = [];
+        for (var i = 0; i < data.length; i++) {
+            samples.push(Object.values(data)[i]);
+  }
+
         console.log("ID#", samples)
-        const twoLabels = { data: samples.map(({ BORO, CUISINE_DESCRIPTION }) => ({ BORO, CUISINE_DESCRIPTION })) };
+        const twoLabels = { data: samples.map(({ boro, cuisine_description }) => ({ boro, cuisine_description })) };
         console.log("twoLabels", twoLabels)
 
         // filter to get different boro's cuisines
         let boroSamples = samples.filter(function (citation) {
-            return citation.BORO == boro
+            return citation.boro == boro
         });
         console.log(boroSamples)
-        let boroCounts = getcounts(boroSamples, "CUISINE_DESCRIPTION");
+        let boroCounts = getcounts(boroSamples, "cuisine_description");
         console.log("boroCounts", boroCounts)
         console.log(Object.keys(boroCounts))
         console.log(Object.values(boroCounts));
@@ -168,7 +176,7 @@ function pieChart(boro) {
         let display = d3.select("#sample-metadata");
         display.html("");
         //get the different violation descriptions for each boro and their counts
-       let boroViolationCounts= getcounts(boroSamples, "VIOLATION_DESC");
+       let boroViolationCounts= getcounts(boroSamples, "violation_desc");
        console.log("boroviolationCounts", boroViolationCounts)
        console.log(Object.keys(boroViolationCounts))
        console.log(Object.values(boroViolationCounts)); 
