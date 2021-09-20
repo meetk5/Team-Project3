@@ -90,6 +90,7 @@ function visualization(boro) {
         // let desc = sort(violationDesc);
 
         let top15codes = sort(violationCode).slice(0, 15);
+        console.log(top15codes[0][1]);
 
         let top15desc = sort(violationDesc).slice(0, 15);
 
@@ -124,26 +125,6 @@ function visualization(boro) {
             rows.append("td").text(top15codes[k][0]);
             rows.append("td").text(top15desc[k][0])
         };
-
-        // let tracepie = {
-        //     labels: top10array.map(xyz => xyz[0]),
-        //     values: top10array.map(xyz => xyz[1]),
-        //     text: top10array.map(xyz => xyz[0]),
-        //     type: "pie"
-        // };
-        // console.log(tracepie)
-
-        // let traceData2 = [tracepie];
-
-        // let layout1 = {
-        //     font: {
-        //         family: 'Gravitas One',
-        //         size: 14
-        //     }
-        // };
-
-        // Plotly.newPlot("myDiv", traceData2, layout1);
-
     })
 };
 
@@ -164,10 +145,9 @@ function getdropdown() {
 
         nycboros.forEach(element => dropdownMenu.append('option').property('value', element).text(element));
     });
-
 };
 
 function optionChanged(dropdownboro) {
     console.log("Option Change is running now");
     visualization(dropdownboro);
-}
+};
