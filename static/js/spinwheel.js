@@ -98,23 +98,26 @@ const sectors = [
 
 
   function restaurants(restaurantInfo){
-    d3.json("../Data/cleaned_db_Aug_31_new.json").then((data) => {
+    d3.json("/cuisines").then((data) => {
         // //get samples info from json file
 
-        let samples = data.data;
+        let samples = [];
+        for (var i = 0; i < data.length; i++) {
+            samples.push(Object.values(data)[i]);
+  }
         console.log("ID#", samples)
-        const twoColumns = { data: samples.map(({ CUISINE_DESCRIPTION, RESTAURANT }) => ({CUISINE_DESCRIPTION, RESTAURANT })) };
+        const twoColumns = { data: samples.map(({ cuisine_description, restaurant }) => ({cuisine_description, restaurant })) };
         console.log("twoColumns", twoColumns)
 
          // filter to get different types of cuisines
         let restSamples = samples.filter(function (restNames) {
-            return restNames.CUISINE_DESCRIPTION == restaurantInfo
+            return restNames.cuisine_description == restaurantInfo
         });
         console.log("restSamples", restSamples)
         let display2 = d3.select("#sample-metadata2");
         display2.html("");
         //get the list of restaurants
-        let restCounts = getcounts(restSamples, "RESTAURANT");
+        let restCounts = getcounts(restSamples, "restaurant");
         console.log("restCounts", restCounts)
         console.log(Object.keys(restCounts))
         console.log(Object.values(restCounts));
@@ -141,16 +144,19 @@ function init(){
 
 
 // //  // see dropdown
-  d3.json("../Data/cleaned_db_Aug_31_new.json").then((data) => {
-    let sampleNames = data.data;
+  d3.json("/cuisines").then((data) => {
+    let sampleNames = [];
+    for (var i = 0; i < data.length; i++) {
+      sampleNames.push(Object.values(data)[i]);
+  }
     var boroNames = {};
     sampleNames.forEach(function(typeBoro){
     //console.log(value)
-    if (boroNames[typeBoro["BORO"]]) {
-        boroNames[typeBoro["BORO"]]++;
+    if (boroNames[typeBoro["boro"]]) {
+        boroNames[typeBoro["boro"]]++;
       }
       else {
-        boroNames[typeBoro["BORO"]] = 1;
+        boroNames[typeBoro["boro"]] = 1;
       } 
     })
 
@@ -160,11 +166,11 @@ function init(){
     var obj = {};
 sampleNames.forEach(function(value){
 //console.log(value)
-if (obj[value["CUISINE_DESCRIPTION"]]) {
-    obj[value["CUISINE_DESCRIPTION"]]++;
+if (obj[value["cuisine_description"]]) {
+    obj[value["cuisine_description"]]++;
   }
   else {
-    obj[value["CUISINE_DESCRIPTION"]] = 1;
+    obj[value["cuisine_description"]] = 1;
   } 
 });
     let results = Object.keys(obj).map(e=>({type:e, count:obj[e]}));
