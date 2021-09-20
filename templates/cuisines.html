@@ -14,6 +14,7 @@
     <title>Cuisines</title>
     <link rel="shortcut icon" type="image/jpg" href="../images/favicon3.png"/>
   </head>
+  <body class="background2">
   <body>
 
     
@@ -52,6 +53,69 @@
     </nav>
 
 
+   
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 jumbotron text-center">
+          <h1>NYC Cuisines by Boro</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="well">
+            <h4>Boro Eats</h4>
+            <select id="selDataset" onchange="optionChanged(this.value)"></select>
+          </div>
+        </div>        
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="pie"></div>
+    </div>
+  </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div id="borochart"></div>
+          </div>
+          <!--div class="panel panel-primary"-->
+            <div class="col-md-6">
+          <div class="panel-heading">
+            <h3 class="panel-title">Top 5 Violations in this Boro</h3>
+          </div>
+          <div id="sample-metadata" class="panel-body"></div>
+          </div>
+          <!--/div-->
+          <!--div class="col-md-6">
+            <div id="toptenqueens"></div>
+            </div-->
+            </div>
+     <!--div class="row">
+        <div class="col-md-6">
+              <div id="toptenbronx"></div>
+              </div>
+            <div class="col-md-6">
+                 <div id="toptenbrooklyn"></div>
+                 </div>
+                 </div>
+      <div class="row">
+          <div class="col-md-6">
+                <div id="toptenstatenisland"></div>
+                    </div>
+                    </div-->
+      <div class="row">
+        <!--div class="col-md-12">
+          <div id="bubble"></div-->
+          
+          <div class="col-md-12">
+            <div id="gauge"></div>
+          </div>
+         
+    </div>
+  
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="../static/js/Boro1.js"></script>
+    <script src="../static/js/Boro2.js"></script>
     <div class="container">
       <h1>This is where cuisine type visualization will go.</h1>
     </div>
