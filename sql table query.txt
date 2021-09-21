@@ -1,0 +1,10 @@
+--Create table violations
+create table violations ("DBA" varchar,
+						 "BORO" varchar,
+						 "VIOLATION CODE" varchar,
+						 "VIOLATION DESCRIPTION" varchar, "CRITICAL FLAG" varchar);
+select * from violations;
+
+--this can be merged with create violations table statement 
+--I had to add this later for sqlalchemy
+alter table violations add id serial primary key;
