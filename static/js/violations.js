@@ -1,5 +1,5 @@
-// getdropdown();
-// init();
+getdropdown();
+init();
 
 function init() {
     visualization("Queens");
@@ -7,7 +7,7 @@ function init() {
 };
 
 function visualization(boro) {
-    d3.json("../Data/violations.json").then(function (data) {
+    d3.json("/violations").then(function (data) {
         console.log(Object.keys(data).length);
 
         let len = Object.keys(data).length;
@@ -132,7 +132,7 @@ function getdropdown() {
     console.log("Get Dropdown is running now");
     var dropdownMenu = d3.select("#selDataset");
 
-    d3.json("../Data/violations.json").then(function (data) {
+    d3.json("/violations").then(function (data) {
         let len = Object.keys(data).length;
         let boros = [];
 
@@ -158,7 +158,7 @@ let barvalues = d3.select(".points");
 
 
 // 
-d3.json("../Data/violations.json").then(function (data) {
+d3.json("/violations").then(function (data) {
     console.log(Object.keys(data).length);
 
     let len = Object.keys(data).length;
