@@ -151,3 +151,38 @@ function optionChanged(dropdownboro) {
     console.log("Option Change is running now");
     visualization(dropdownboro);
 };
+
+let barvalues = d3.select(".points");
+
+
+
+
+// 
+d3.json("../Data/violations.json").then(function (data) {
+    console.log(Object.keys(data).length);
+
+    let len = Object.keys(data).length;
+
+    let restaurants = [];
+    let violationCode = [];
+    let restaurantdata = [];
+    let boroviodata = []
+
+    for (i = 0; i < len; i++) {
+        restaurantdata.push(Object.values(data)[i]);
+    };
+
+    boroviodata.push(restaurantdata.filter(function (element) {
+        return (element["BORO"] === "Queens" && element["VIOLATION CODE"] === "10F");
+    }));
+    console.log(boroviodata[0]);
+
+    let boroviolen = boroviodata[0].length;
+
+    for (j = 0; j < boroviolen; j++) {
+        restaurants.push(boroviodata[0][j]["DBA"]);
+    };
+
+    console.log("Restaurants with violations:", restaurants.slice(0,20));
+
+    });
