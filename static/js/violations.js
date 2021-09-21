@@ -1,5 +1,5 @@
-getdropdown();
-init();
+// getdropdown();
+// init();
 
 function init() {
     visualization("Queens");
