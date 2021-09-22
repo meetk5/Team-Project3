@@ -32,7 +32,6 @@ def home():
     # Return template and data
     return render_template("index.html")
 
-
 # @app.route("/cuisines")
 # def cuisines():
 #     # Create our session (link) from Python to the DB
@@ -58,9 +57,9 @@ def home():
 @app.route("/violations")
 def violations():
     session = Session(engine)
-    violations_data = session.query(Violations.DBA, Violations.BORO,
-                                    Violations.VIOLATION_CODE, Violations.VIOLATION_DESCRIPTION, 
-                                    Violations.CRITICAL_FLAG).all()
+    violations_data = session.query(Violations.dba, Violations.boro,
+                                    Violations.violation_code, Violations.violation_description, 
+                                    Violations.critical_flag).all()
     session.close()
 
     violation_list = []
@@ -77,4 +76,4 @@ def violations():
 
 
 if __name__ == '__main__':
-    app.run(port=5501, debug=True)
+    app.run(debug=True)

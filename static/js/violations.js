@@ -154,6 +154,17 @@ function optionChanged(dropdownboro) {
 
 let barvalues = d3.select(".points");
 
+document.getElementById("bar").on('plotly_click', function (){
+    // var pts = '';
+    // for (var i = 0; i < data.points.length; i++) {
+    //     pts = 'x = ' + data.points[i].x + '\ny = ' +
+    //         data.points[i].y.toPrecision(4) + '\n\n';
+    // }
+    alert('on plotly working');
+});
+
+
+
 
 
 
@@ -183,6 +194,6 @@ d3.json("/violations").then(function (data) {
         restaurants.push(boroviodata[0][j]["DBA"]);
     };
 
-    console.log("Restaurants with violations:", restaurants.slice(0,20));
+    console.log("Restaurants with violations:", restaurants.slice(0, 20));
 
-    });
+});
