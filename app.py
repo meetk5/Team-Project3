@@ -16,7 +16,7 @@ if 'DATABASE_URL' in os.environ:
 else:
     #if we're not running in heroku then try and get my local config password
     import config
-    postgres_url = f"postgresql://postgres:{config.password}@127.0.0.1:5432/{database}"
+    postgres_url = f"postgresql://postgres:{config.password}@127.0.0.1:{config.port}/{database}"
  
 #engine = create_engine(f'postgresql://postgres:{config.password}@localhost:5432/{database}')
 
@@ -41,26 +41,43 @@ def home():
     # Return template and data
     return render_template("index.html")
 
+@app.route("/othergraphs")
+def othergraphs():
+    return render_template("othergraphs.html")
+
+@app.route("/borocuisines")
+def borocuisines():
+    return render_template("borocuisines.html")
+
+@app.route("/restaurantfinder")
+def restaurantfinder():
+    return render_template("restaurantfinder.html")
+
+@app.route("/violationdata")
+def violationdata():
+    return render_template("violationdata.html")
+
 @app.route("/cuisines")
 def cuisines():
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
     # Query all passengers
-    results = session.query(Restaurant_info.restaurant, Restaurant_info.boro,Restaurant_info.phone,Restaurant_info.cuisine,Restaurant_info.latitude,Restaurant_info.longitude).all()
+    results = session.query(Restaurant_info.restaurant, Restaurant_info.boro,Restaurant_info.phone,Restaurant_info.cuisine,Restaurant_info.latitude,Restaurant_info.longitude,Restaurant_info.violationdesc).all()
 
     session.close()
 
     # Create a dictionary from the row data and append to a list of all_passengers
     cuisine_info = []
-    for restaurants,boro,phone,cuisine,lat,lng in results:
+    for restaurants,boro,phone,cuisine,lat,lng,desc in results:
         cuisine_dict = {}
         cuisine_dict["restaurant"] = restaurants
         cuisine_dict["cuisine_description"] = cuisine
         cuisine_dict["boro"] = boro
         cuisine_dict["phone"] = phone
         cuisine_dict["latitude"] = lat
-        cuisine_dict["longitude"] = lng       
+        cuisine_dict["longitude"] = lng  
+        cuisine_dict["violation_desc"] = desc
         cuisine_info.append(cuisine_dict)
 
     return jsonify(cuisine_info)
