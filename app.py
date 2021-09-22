@@ -2,13 +2,25 @@
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
-import config
+import os
 
 from flask import Flask, jsonify, render_template, redirect
 
 # Database Setup
 database = 'restaurant_db'
-engine = create_engine(f'postgresql://postgres:{config.password}@localhost:5432/{database}')
+
+#check if we're running in heroku and my environmental variable exist
+if 'DATABASE_URL' in os.environ:
+    postgres_url = os.environ['DATABASE_URL']
+
+else:
+    #if we're not running in heroku then try and get my local config password
+    import config
+    postgres_url = f"postgresql://postgres:{config.password}@127.0.0.1:5432/{database}"
+ 
+#engine = create_engine(f'postgresql://postgres:{config.password}@localhost:5432/{database}')
+
+engine = create_engine(postgres_url)
 
 # reflect an existing database into a new model
 Base = automap_base()
@@ -17,12 +29,11 @@ Base.prepare(engine, reflect=True)
 
 # Save reference to the table
 Restaurant_info = Base.classes.restaurants
-
-
 # Flask Setup
 app = Flask(__name__)
 
-# Flask Routes
+
+#Flask Routes
 
 @app.route("/")
 def home():
