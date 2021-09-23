@@ -1,0 +1,25 @@
+name: HerokuDeploymentDemo
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.6
+  - certifi
+  - click
+  - dataclasses
+  - Flask
+  - Flask-SQLAlchemy
+  - greenlet
+  - importlib-metadata
+  - itsdangerous 
+  - Jinja2
+  - MarkupSafe
+  - psycopg2
+  - SQLAlchemy
+  - typing-extensions
+  - Werkzeug
+  - zipp
+  - pip
+  - pip:
+    - gunicorn
+
