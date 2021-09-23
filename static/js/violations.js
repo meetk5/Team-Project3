@@ -117,8 +117,8 @@ function visualization(boro) {
             x: top15codes.map(xyz => xyz[0]),
             y: top15codes.map(xyz => xyz[1]),
             text: top15desc.map(xyz => xyz[0]),
-            marker: {color:'green'},
-            type: "bar",
+            marker: {color: "rgb(156, 4, 4)"},
+            type: "bar"
         };
         console.log(tracebar)
 
@@ -131,7 +131,7 @@ function visualization(boro) {
             },
             hovermode: 'closest',
             title: `Violation details among ${boro} restaurants`,
-            xaxis: { title: "Violations" },
+            xaxis: { title: "Violation Codes" },
             yaxis: { title: "Nos. of Violations" }
         };
 
@@ -149,10 +149,10 @@ function visualization(boro) {
             let restaurantdisplay = d3.select("#restaurantdetails");
             restaurantdisplay.html("");
 
-            restaurantdisplay.append("h4").text(`Restaurants with ${clickcode} Violations in ${boro}:`);
+            restaurantdisplay.append("h5").text(`Restaurants with ${clickcode} Violations in ${boro}:`);
 
             for (k = 0; k < restdata.length; k++) {
-                restaurantdisplay.append("h5").text(`${restdata[k]}`);
+                restaurantdisplay.append("ul").append("li").text(`${restdata[k]}`);
             }
         });
 
