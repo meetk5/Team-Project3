@@ -117,7 +117,7 @@ function visualization(boro) {
             x: top15codes.map(xyz => xyz[0]),
             y: top15codes.map(xyz => xyz[1]),
             text: top15desc.map(xyz => xyz[0]),
-            // marker: {color: "rgb(156, 4, 4)"},
+            marker: {color: "rgb(156, 4, 4)"},
             type: "bar"
         };
         console.log(tracebar)
