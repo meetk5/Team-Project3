@@ -31,6 +31,7 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     print("rendering homepage")
+    print(postgres_url)
     # Return template and data
     return render_template("index.html")
 
@@ -51,7 +52,7 @@ def home():
 #     return render_template("violationdata.html")
 
 
-# engine = create_engine(postgres_url)
+engine = create_engine(postgres_url)
 
 # # reflect an existing database into a new model
 # Base = automap_base()
