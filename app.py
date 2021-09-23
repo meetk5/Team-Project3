@@ -18,21 +18,11 @@ if 'DATABASE_URL' in os.environ:
 else:
     #if we're not running in heroku then try and get my local config password
     import config
-    postgres_url = f"postgresql://postgres:{config.password}@127.0.0.1:{config.port}/{database}"
+    postgres_url = f"postgresql://postgres:{config.password}@127.0.0.1:5432/{database}"
  
 #engine = create_engine(f'postgresql://postgres:{config.password}@localhost:5432/{database}')
 
-engine = create_engine(postgres_url)
 
-# reflect an existing database into a new model
-Base = automap_base()
-# reflect the tables
-Base.prepare(engine, reflect=True)
-
-# Save reference to the table
-Restaurant_info = Base.classes.restaurants
-# Flask Setup
-app = Flask(__name__)
 
 
 #Flask Routes
@@ -58,6 +48,20 @@ def restaurantfinder():
 @app.route("/violationdata")
 def violationdata():
     return render_template("violationdata.html")
+
+
+engine = create_engine(postgres_url)
+
+# reflect an existing database into a new model
+Base = automap_base()
+# reflect the tables
+Base.prepare(engine, reflect=True)
+
+# Save reference to the table
+Restaurant_info = Base.classes.restaurants
+# Flask Setup
+app = Flask(__name__)
+
 
 @app.route("/cuisines")
 def cuisines():
