@@ -12,12 +12,13 @@ function visualization(boro) {
 
         let len = Object.keys(data).length;
 
-        let restaurants = [];
         let violationCode = [];
         let violationDesc = [];
         let criticalFlag = [];
         let borodata = [];
         let restaurantdata = [];
+        let restaurants = [];
+        let boroviodata = [];
 
         for (i = 0; i < len; i++) {
             restaurantdata.push(Object.values(data)[i]);
@@ -31,13 +32,11 @@ function visualization(boro) {
         let borolen = borodata[0].length;
 
         for (j = 0; j < borolen; j++) {
-            restaurants.push(borodata[0][j]["DBA"]);
             violationDesc.push(borodata[0][j]["VIOLATION DESCRIPTION"]);
             violationCode.push(borodata[0][j]["VIOLATION CODE"]);
             criticalFlag.push(borodata[0][j]["CRITICAL FLAG"]);
         };
 
-        console.log("Restaurants", restaurants);
         console.log("Violation Desc", violationDesc);
         console.log("Violation Codes", violationCode);
         console.log("Critical Flag", criticalFlag);
@@ -85,9 +84,29 @@ function visualization(boro) {
             return sortable;
         }
 
-        // let code = sort(violationCode);
+        function getrestaurants(viocode) {
 
-        // let desc = sort(violationDesc);
+            boroviodata.push(borodata[0].filter(function (element) {
+                return element["VIOLATION CODE"] === viocode;
+            }));
+            console.log(boroviodata);
+
+            let boroviolen = boroviodata[0].length;
+            console.log(boroviolen);
+
+            for (j = 0; j < boroviolen; j++) {
+                restaurants.push(boroviodata[0][j]["DBA"]);
+            };
+
+            boroviodata = [];
+
+            let top20restaurants = restaurants.slice(0, 20);
+
+            restaurants = [];
+
+            console.log(`Restaurants with ${viocode} violations:`, top20restaurants);
+            return top20restaurants;
+        }
 
         let top15codes = sort(violationCode).slice(0, 15);
         console.log(top15codes[0][1]);
@@ -98,6 +117,7 @@ function visualization(boro) {
             x: top15codes.map(xyz => xyz[0]),
             y: top15codes.map(xyz => xyz[1]),
             text: top15desc.map(xyz => xyz[0]),
+            marker: {color:'green'},
             type: "bar",
         };
         console.log(tracebar)
@@ -107,14 +127,34 @@ function visualization(boro) {
         let layout = {
             font: {
                 family: 'Gravitas One',
-                size: 14
+                size: 18
             },
+            hovermode: 'closest',
             title: `Violation details among ${boro} restaurants`,
             xaxis: { title: "Violations" },
             yaxis: { title: "Nos. of Violations" }
         };
 
         Plotly.newPlot("bar", traceData1, layout);
+
+        document.getElementById('bar').on('plotly_click', function (tracedata1) {
+            var clickcode = '';
+            for (var i = 0; i < tracedata1.points.length; i++) {
+                clickcode = tracedata1.points[i].x;
+            }
+
+            let restdata = getrestaurants(clickcode);
+            console.log(restdata.length);
+
+            let restaurantdisplay = d3.select("#restaurantdetails");
+            restaurantdisplay.html("");
+
+            restaurantdisplay.append("h4").text(`Restaurants with ${clickcode} Violations in ${boro}:`);
+
+            for (k = 0; k < restdata.length; k++) {
+                restaurantdisplay.append("h5").text(`${restdata[k]}`);
+            }
+        });
 
         let tbody = d3.select("tbody");
         tbody.html("");
@@ -151,49 +191,3 @@ function optionChanged(dropdownboro) {
     console.log("Option Change is running now");
     visualization(dropdownboro);
 };
-
-let barvalues = d3.select(".points");
-
-document.getElementById("bar").on('plotly_click', function (){
-    // var pts = '';
-    // for (var i = 0; i < data.points.length; i++) {
-    //     pts = 'x = ' + data.points[i].x + '\ny = ' +
-    //         data.points[i].y.toPrecision(4) + '\n\n';
-    // }
-    alert('on plotly working');
-});
-
-
-
-
-
-
-// 
-d3.json("/violations").then(function (data) {
-    console.log(Object.keys(data).length);
-
-    let len = Object.keys(data).length;
-
-    let restaurants = [];
-    let violationCode = [];
-    let restaurantdata = [];
-    let boroviodata = []
-
-    for (i = 0; i < len; i++) {
-        restaurantdata.push(Object.values(data)[i]);
-    };
-
-    boroviodata.push(restaurantdata.filter(function (element) {
-        return (element["BORO"] === "Queens" && element["VIOLATION CODE"] === "10F");
-    }));
-    console.log(boroviodata[0]);
-
-    let boroviolen = boroviodata[0].length;
-
-    for (j = 0; j < boroviolen; j++) {
-        restaurants.push(boroviodata[0][j]["DBA"]);
-    };
-
-    console.log("Restaurants with violations:", restaurants.slice(0, 20));
-
-});
