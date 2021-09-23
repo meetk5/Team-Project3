@@ -22,7 +22,8 @@ else:
  
 #engine = create_engine(f'postgresql://postgres:{config.password}@localhost:5432/{database}')
 
-
+# Flask Setup
+app = Flask(__name__)
 
 
 #Flask Routes
@@ -59,8 +60,7 @@ Base.prepare(engine, reflect=True)
 
 # Save reference to the table
 Restaurant_info = Base.classes.restaurants
-# Flask Setup
-app = Flask(__name__)
+
 
 
 @app.route("/cuisines")
