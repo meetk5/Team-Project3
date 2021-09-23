@@ -13,7 +13,7 @@ database = 'restaurant_db'
 
 #check if we're running in heroku and my environmental variable exist
 if 'DATABASE_URL' in os.environ:
-    postgres_url = os.environ['DATABASE_URL']
+    postgres_url = os.environ['DATABASE_URL2']
 
 else:
     #if we're not running in heroku then try and get my local config password
