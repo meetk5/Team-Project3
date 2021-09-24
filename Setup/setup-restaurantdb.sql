@@ -10,16 +10,16 @@ CAMIS varchar primary key,
 	inspectiontype varchar,latitude varchar, longitude varchar);
 
 select * from restaurants;
---delete from restaurants where camis = 'CAMIS' and restaurant = 'DBA';
+
 
 --Create table violations
-create table violations (restaurant varchar NOT NULL,
-						 violation_code varchar(4) NOT NULL,
-						 violation_desc varchar,Critical varchar);
+create table violations (restaurant varchar,
+						 boro varchar,
+						 violation_code varchar,
+						 violation_desc varchar,
+						 critical_flag varchar);
 select * from violations;
 
 --this can be merged with create violations table statement 
 --I had to add this later for sqlalchemy
 alter table violations add id serial primary key;
-
-
