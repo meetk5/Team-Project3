@@ -76,16 +76,17 @@ def cuisines():
 def violations():
     Violations_info = Base.classes.violations
     session = Session(engine)
-    violations_data = session.query(Violations_info.restaurant,Violations_info.violation_code,Violations_info.violation_desc,Violations_info.critical).all()
+    violations_data = session.query(Violations_info.restaurant,Violations_info.violation_code,Violations_info.violation_desc,Violations_info.critical, Violations_info.boro).all()
     session.close()
 
     violation_list = []
-    for rest, code, desc, crit in violations_data:
+    for rest, code, desc, crit, boro in violations_data:
         violation_dict = {}
         violation_dict["Restaurant"] = rest
         violation_dict["ViolationCode"] = code
         violation_dict["ViolationDesc"] = desc
         violation_dict["Critical"] = crit
+        violation_dict["boro"] = boro
         violation_list.append(violation_dict)
 
     return jsonify(violation_list)

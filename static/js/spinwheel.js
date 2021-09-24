@@ -69,6 +69,7 @@ const sectors = [
   
   function rotate() {
     const sector = sectors[getIndex()];
+    //console.log("sector", sector)
     ctx.canvas.style.transform = `rotate(${ang - PI / 2}rad)`;
     EL_spin.textContent = !angVel ? "SPIN" : sector.label;
     EL_spin.style.background = sector.color;
