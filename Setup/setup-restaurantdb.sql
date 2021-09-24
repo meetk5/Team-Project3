@@ -17,7 +17,7 @@ create table violations (restaurant varchar,
 						 boro varchar,
 						 violation_code varchar,
 						 violation_desc varchar,
-						 critical_flag varchar);
+						 critical varchar);
 select * from violations;
 
 --this can be merged with create violations table statement 
