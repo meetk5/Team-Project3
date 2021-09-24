@@ -197,7 +197,7 @@ function pieChart(boro) {
          console.log("borodisplay", boroViolationDisplay)
      //loop to get violations info into the top violations in each boro box
      Object.entries(boroViolationDisplay).forEach(([,b])=>{
-       display.append("h5").text(`${b}`); 
+       display.append("h5").text(`- ${b}`); 
      });
      
     });
