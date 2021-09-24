@@ -4,10 +4,10 @@ from sqlalchemy import create_engine
 import config
 
 #Extract CSV into DataFrame 
-restaurants_df = pd.read_csv("Data/cleanDb_Aug_31cuisines.csv")
+restaurants_df = pd.read_csv("../data/cleanDb_Aug_31cuisines.csv")
 
 #Extract CSV into DataFrame
-violations_df = pd.read_csv("Data/Violations_4fields.csv")
+violations_df = pd.read_csv("../data/Violations1.csv")
 
 #Create Database connection
 connection_string = f"postgres:{config.password}@localhost:5432/restaurant_db"
