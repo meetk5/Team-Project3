@@ -92,7 +92,7 @@ IMG.panel:hover {
 
 body.background {
     
-    background-image: url("../../images/landingbackground2.jpg");
+    background-image: url("/static/landingbackground2.jpg");
     background-color: brown;
     max-width: 100%;
     height: auto;

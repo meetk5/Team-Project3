@@ -25,21 +25,21 @@ function visualization(boro) {
         };
 
         borodata.push(restaurantdata.filter(function (element) {
-            return element.BORO === boro;
+            return element.boro === boro;
         }));
         console.log(borodata[0]);
 
         let borolen = borodata[0].length;
 
         for (j = 0; j < borolen; j++) {
-            violationDesc.push(borodata[0][j]["VIOLATION DESCRIPTION"]);
-            violationCode.push(borodata[0][j]["VIOLATION CODE"]);
-            criticalFlag.push(borodata[0][j]["CRITICAL FLAG"]);
+            violationDesc.push(borodata[0][j]["ViolationDesc"]);
+            violationCode.push(borodata[0][j]["ViolationCode"]);
+            criticalFlag.push(borodata[0][j]["Critical"]);
         };
 
         console.log("Violation Desc", violationDesc);
         console.log("Violation Codes", violationCode);
-        console.log("Critical Flag", criticalFlag);
+        console.log("Critical", criticalFlag);
 
         function unique(param) {
             let unique = [... new Set(param)];
@@ -87,7 +87,7 @@ function visualization(boro) {
         function getrestaurants(viocode) {
 
             boroviodata.push(borodata[0].filter(function (element) {
-                return element["VIOLATION CODE"] === viocode;
+                return element["ViolationCode"] === viocode;
             }));
             console.log(boroviodata);
 
@@ -95,7 +95,7 @@ function visualization(boro) {
             console.log(boroviolen);
 
             for (j = 0; j < boroviolen; j++) {
-                restaurants.push(boroviodata[0][j]["DBA"]);
+                restaurants.push(boroviodata[0][j]["Restaurant"]);
             };
 
             boroviodata = [];
@@ -177,7 +177,7 @@ function getdropdown() {
         let boros = [];
 
         for (i = 0; i < len; i++) {
-            boros.push(Object.values(data)[i]["BORO"]);
+            boros.push(Object.values(data)[i]["boro"]);
         }
 
         let nycboros = [... new Set(boros)].slice(0, 5);
