@@ -27,7 +27,7 @@ We have created a website that precisely helps people find details about the res
 
 We even have a “Wheel of Fortune” style feature that’ll help users choose a cuisine and suggest you a list of restaurants based on their selection when they are faced with a “Choice Overload” dilemma.
 
-##### **Data sources:** 
+#### **Data sources:** 
 
 For our website, we used [DOHMH New York City Restaurant Inspection Results Dataset](https://dev.socrata.com/foundry/data.cityofnewyork.us/43nn-pn8j) that contains data of restaurants, their location, cuisines, inspection report, violations and their description of all boroughs in NYC. Our dataset had 382k rows and 26 columns. While going through our data we were able to decide that we will do visualizations around cuisine data by borough, restaurant's locations on map and violation details for the restaurants.
 
@@ -67,9 +67,17 @@ We chose to use a SQL database in Postgres for our data because it is a more str
 
 In visual studio code using javascript, we used our JSON files to call our data queries. Once the data was called, we were able to create visualizations for our website.
 
-## Visualizations
+## Website Design
 
+- There are a total of 5 Webpages (1 Landing Page, 4 Visualization pages) that were built using HTML, CSS, and Bootstrap
 
+- The Landing Page is responsive and has four icon images linked to other pages. Each icon expands on hover
+
+  ![homepageimage]()
+
+- Each visualization page has a navbar that will indicate what the active page is. The navbar also has an image of the logo.
+
+- Each page has a favicon that will appear in the browser tab.
 
 ## **Team Members**
 - [Jay Dhruv](https://github.com/jaybdhruv)
