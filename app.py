@@ -1,12 +1,12 @@
 
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func
+from sqlalchemy import create_engine
 import psycopg2
 import os
 import socket
 
-from flask import Flask, jsonify, render_template, redirect
+from flask import Flask, jsonify, render_template
 
 # Database Setup
 database = 'restaurant_db'
@@ -18,21 +18,17 @@ if 'DATABASE_URL' in os.environ:
 else:
     #if we're not running in heroku then try and get my local config password
     import config
-    postgres_url = f"postgresql://postgres:{config.password}@127.0.0.1:5432/{database}"
- 
-#engine = create_engine(f'postgresql://postgres:{config.password}@localhost:5432/{database}')
+    postgres_url = f"postgresql://postgres:{config.password}@127.0.0.1:{config.port}/{database}"
 
 # Flask Setup
 app = Flask(__name__)
 
-
 #Flask Routes
-
 @app.route("/")
 def home():
     print("rendering homepage")
     print(postgres_url)
-    # Return template and data
+    # Return template
     return render_template("index.html")
 
 @app.route("/othergraphs")
@@ -111,3 +107,5 @@ def violations():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+#engine = create_engine(f'postgresql://postgres:{config.password}@localhost:5432/{database}')
