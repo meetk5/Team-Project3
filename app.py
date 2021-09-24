@@ -47,9 +47,9 @@ def borocuisines():
 def restaurantfinder():
     return render_template("restaurantfinder.html")
 
-@app.route("/violationdata")
+@app.route("/violations1")
 def violationdata():
-    return render_template("violationdata.html")
+    return render_template("violations1.html")
 
 
 engine = create_engine(postgres_url)
@@ -94,16 +94,17 @@ def cuisines():
 def violations():
     Violations_info = Base.classes.violations
     session = Session(engine)
-    violations_data = session.query(Violations_info.restaurant,Violations_info.violation_code,Violations_info.violation_desc,Violations_info.critical).all()
+    violations_data = session.query(Violations_info.restaurant,Violations_info.boro, Violations_info.violation_code,Violations_info.violation_desc,Violations_info.critical).all()
     session.close()
 
     violation_list = []
-    for rest, code, desc, crit in violations_data:
+    for rest, boro, code, desc, crit in violations_data:
         violation_dict = {}
-        violation_dict["Restaurant"] = rest
-        violation_dict["ViolationCode"] = code
-        violation_dict["ViolationDesc"] = desc
-        violation_dict["Critical"] = crit
+        violation_dict["DBA"] = rest
+        violation_dict["BORO"] = boro
+        violation_dict["VIOLATION CODE"] = code
+        violation_dict["VIOLATION DESCRIPTION"] = desc
+        violation_dict["CRITICAL FLAG"] = crit
         violation_list.append(violation_dict)
 
     return jsonify(violation_list)
