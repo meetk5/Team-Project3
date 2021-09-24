@@ -2,7 +2,7 @@ getdropdown();
 init();
 
 function init() {
-    visualization("Queens");
+    visualization("Brooklyn");
     console.log("init function is running now")
 };
 
@@ -109,7 +109,7 @@ function visualization(boro) {
         }
 
         let top15codes = sort(violationCode).slice(0, 15);
-        console.log(top15codes[0][1]);
+        //console.log(top15codes[0][1]);
 
         let top15desc = sort(violationDesc).slice(0, 15);
 
