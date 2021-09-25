@@ -65,7 +65,7 @@ if (obj[value["cuisine_description"]]) {
     
      //see manhattan data when the page loads the first sample
      
-     pieChart("Manhattan");
+     pieChart("Queens");
      
 
 });
