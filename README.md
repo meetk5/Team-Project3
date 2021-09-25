@@ -1,7 +1,7 @@
 # The Data Restaurateurs - Restaurant Finder NYC
 ![Grouplogo]()
 
-[[The Data Restaurateurs Heroku Link](herokulink)]
+[[The Data Restaurateurs Heroku Link](https://the-data-restaurateurs.herokuapp.com/)]
 
 ## **Table of Contents**
 
@@ -11,6 +11,11 @@
 - Transform
 - Load
 - Deploy
+- Website Design
+- Visualizations & Analysis
+- Run Flask
+- Heroku
+- Challenges
 - Team Members
 
 ## **Background** & General Info
@@ -67,22 +72,62 @@ We chose to use a SQL database in Postgres for our data because it is a more str
 
 In visual studio code using javascript, we used our JSON files to call our data queries. Once the data was called, we were able to create visualizations for our website.
 
+We later deployed flask app to run our visualization on local server.
+
 ## Website Design
 
 - There are a total of 5 Webpages (1 Landing Page, 4 Visualization pages) that were built using HTML, CSS, and Bootstrap
 
-- The Landing Page is responsive and has four icon images linked to other pages. Each icon expands on hover
+- The Landing Page is responsive and has four icon images linked to other pages. Each icon expands on hover.
 
   ![homepageimage]()
 
 - Each visualization page has a navbar that will indicate what the active page is. The navbar also has an image of the logo.
 
-- Each page has a favicon that will appear in the browser tab.
+  ![navbarimage]()
+
+- Each page has a favicon that will appear in the browser tab
+
+  ![faviconimage]()
+
+## Visualizations & Analysis
+
+#### Find Restaurants 
+
+
+
+## Run Flask
+
+To Deploy our Flask App, please follow the below steps :
+
+- Step 1: Git clone our repository into your local
+- Step 2: Confirm that jupyter notebook is up and running with the env where you have the python libraries mentioned in the notebook installed
+- Step 3: Confirm that you have postgress app up and running in your machine
+- Step 4: Confirm that your postgress username and password is added to the config.py
+- Step 5: Create a database in postgres called 'restaurant_db'
+- Step 6: Use the [**setup-restaurantdb.sql**](https://github.com/meetk5/Team-Project3/blob/main/Setup/setup-restaurantdb.sql) inside Setup folder to run the create table commands
+- Step 7: Run [**setup-db-instructions.py**](https://github.com/meetk5/Team-Project3/blob/main/Setup/setup-db-instructions.py) jupyter notebook from the same setup folder
+- Step 8: Confirm that your config.py has the right postgress url, username and password
+- Step 9: Run [**setup-db-instructions.py**](https://github.com/meetk5/Team-Project3/blob/main/Setup/setup-db-instructions.py) to make a connection between python and SQL database using SQLAlchemy
+- Step 9: Execute command python [app.py](https://github.com/meetk5/Team-Project3/blob/main/app.py) and launch the server using URL: http://127.0.0.1:5000/
+
+## Heroku
+
+[[The Data Restaurateurs Heroku Link](https://the-data-restaurateurs.herokuapp.com/)] We were able to deploy our app to Heroku.
+
+## Challenges
+
+
 
 ## **Team Members**
-- [Jay Dhruv](https://github.com/jaybdhruv)
-- [Meet K Kaur Sahni](https://github.com/meetk5)
-- [Kate Yayla](https://github.com/Kate-Yayla)
 - [Brian Johnson](https://github.com/Bjohnson08021/)
+
+- [Kate Yayla](https://github.com/Kate-Yayla)
+
+- [Jay Dhruv](https://github.com/jaybdhruv)
+
+- [Meet K Kaur Sahni](https://github.com/meetk5)
+
 - [Saleha Ahmed](https://github.com/saleha456)
-- [Dennis Smith](https://github.com/DennisPSmith5676)
+
+  
