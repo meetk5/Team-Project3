@@ -8,7 +8,7 @@ import socket
 
 from flask import Flask, jsonify, render_template
 
-# Database Setup
+#Database Setup
 database = 'restaurant_db'
 
 #check if we're running in heroku and my environmental variable exist
