@@ -15,7 +15,7 @@
 - Visualizations & Analysis
 - Run Flask
 - Heroku
-- Challenges
+- Lessons
 - Team Members
 
 ## **Background** & General Info
@@ -40,7 +40,8 @@ For our project, we filtered out data from January 1, 2020 till August 31, 2021 
 
 ## **Technologies**
 
-- Python (Jupyter Notebook, Pandas, SQLAlchemy, psycopg2)
+- Python (Jupyter Notebook, Pandas)
+- Flask (SQLAlchemy, psycopg2)
 - SQL/ Postgres DB
 - JavaScript Libraries (D3, Plotly, Leaflet)
 - HTML/ CSS (Bootstrap)
@@ -65,7 +66,7 @@ We chose to use a SQL database in Postgres for our data because it is a more str
 - After extracting and transforming process, we had two dataframes - **rest_df1** (containing unique details of each restaurant, cuisines and violations) and **violdf2** (containing details of all violations and its description for each restaurant)
 - These 2 dataframes were loaded into a SQL database in pgAdmin 4
 - A database was created in pgAdmin4 called "**restaurant_db**"
-- A table called "**restaurant**" was created to correspond with the **rest_df1** and "**violations**" corresponded to "**violdf2**"
+- A table called "**restaurants**" was created to correspond with the **rest_df1** and "**violations**" corresponded to "**violdf2**"
 - We used sqlalchemy to create engine and connection with our database in pgAdmin and then used to_sql command to load our dataframes into the table in the database
 
 ## Deploy
@@ -109,13 +110,13 @@ To Deploy our Flask App, please follow the below steps :
 - Step 7: Run [**setup-db-instructions.py**](https://github.com/meetk5/Team-Project3/blob/main/Setup/setup-db-instructions.py) jupyter notebook from the same setup folder
 - Step 8: Confirm that your config.py has the right postgress url, username and password
 - Step 9: Run [**setup-db-instructions.py**](https://github.com/meetk5/Team-Project3/blob/main/Setup/setup-db-instructions.py) to make a connection between python and SQL database using SQLAlchemy
-- Step 9: Execute command python [app.py](https://github.com/meetk5/Team-Project3/blob/main/app.py) and launch the server using URL: http://127.0.0.1:5000/
+- Step 10: Execute command python [app.py](https://github.com/meetk5/Team-Project3/blob/main/app.py) and launch the server using URL: http://127.0.0.1:5000/
 
 ## Heroku
 
 [[The Data Restaurateurs Heroku Link](https://the-data-restaurateurs.herokuapp.com/)] We were able to deploy our app to Heroku.
 
-## Challenges
+## Lessons Learned
 
 
 
