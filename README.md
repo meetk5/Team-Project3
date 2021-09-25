@@ -2,23 +2,23 @@
 
 ![grouplogo](https://github.com/meetk5/Team-Project3/blob/main/Images/logo.png)
 
-[[The Data Restaurateurs Heroku Link](https://the-data-restaurateurs.herokuapp.com/)]
+[The Data Restaurateurs Heroku Link](https://the-data-restaurateurs.herokuapp.com/)
 
 ## **Table of Contents**
 
-- Background & General Info
-- Technologies
-- Extract
-- Transform
-- Load
-- Deploy
-- Website Design
-- Visualizations & Analysis
-- Run Flask
-- Heroku
-- Lessons Learned
-- Inspirations
-- Team Members
+- [Background & General Info](https://github.com/meetk5/Team-Project3#background--general-info)
+- [Technologies](https://github.com/meetk5/Team-Project3#technologies)
+- [Extract](https://github.com/meetk5/Team-Project3#extract)
+- [Transform](https://github.com/meetk5/Team-Project3#transform)
+- [Load](https://github.com/meetk5/Team-Project3#load)
+- [Deploy](https://github.com/meetk5/Team-Project3#deploy)
+- [Website Design](https://github.com/meetk5/Team-Project3#website-design)
+- [Visualizations & Analysis](https://github.com/meetk5/Team-Project3#visualizations--analysis)
+- [Run Flask](https://github.com/meetk5/Team-Project3#run-flask)
+- [Heroku](https://github.com/meetk5/Team-Project3#heroku)
+- [Lessons Learned](https://github.com/meetk5/Team-Project3#lessons-learned)
+- [Inspirations](https://github.com/meetk5/Team-Project3#inspiration)
+- [Team Members](https://github.com/meetk5/Team-Project3#team-members)
 
 ## **Background** & General Info
 
