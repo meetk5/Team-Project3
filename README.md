@@ -2,7 +2,7 @@
 
 ![grouplogo](https://github.com/meetk5/Team-Project3/blob/main/Images/logo.png)
 
-[The Data Restaurateurs Heroku Link](https://the-data-restaurateurs.herokuapp.com/)
+**[The Data Restaurateurs Heroku Link](https://the-data-restaurateurs.herokuapp.com/)**
 
 ## **Table of Contents**
 
@@ -17,7 +17,7 @@
 - [Run Flask](https://github.com/meetk5/Team-Project3#run-flask)
 - [Heroku](https://github.com/meetk5/Team-Project3#heroku)
 - [Lessons Learned](https://github.com/meetk5/Team-Project3#lessons-learned)
-- [Inspirations](https://github.com/meetk5/Team-Project3#inspiration)
+- [Inspiration](https://github.com/meetk5/Team-Project3#inspiration)
 - [Team Members](https://github.com/meetk5/Team-Project3#team-members)
 
 ## **Background** & General Info
@@ -141,14 +141,14 @@ To Deploy our Flask App, please follow the below steps :
 - Step 4: Confirm that your postgress username and password is added to the config.py
 - Step 5: Create a database in postgres called 'restaurant_db'
 - Step 6: Use the [**setup-restaurantdb.sql**](https://github.com/meetk5/Team-Project3/blob/main/Setup/setup-restaurantdb.sql) inside Setup folder to run the create table commands
-- Step 7: Run [**setup-db-instructions.py**](https://github.com/meetk5/Team-Project3/blob/main/Setup/setup-db-instructions.py) jupyter notebook from the same setup folder
-- Step 8: Confirm that your config.py has the right postgress url, username and password
+- Step 7: Run [**setup-db-instructions.ipynb**](https://github.com/meetk5/Team-Project3/blob/main/Setup/setup-db-instructions.ipynb) jupyter notebook from the same setup folder
+- Step 8: Confirm that your **config.py** has the right postgress url, username and password and is saved in the folder where your app.py is there.
 - Step 9: Run [**setup-db-instructions.py**](https://github.com/meetk5/Team-Project3/blob/main/Setup/setup-db-instructions.py) to make a connection between python and SQL database using SQLAlchemy
-- Step 10: Execute command python [app.py](https://github.com/meetk5/Team-Project3/blob/main/app.py) and launch the server using URL: http://127.0.0.1:5000/
+- Step 10: Execute command python [**app.py**](https://github.com/meetk5/Team-Project3/blob/main/app.py) and launch the server using URL: **http://127.0.0.1:5000/**
 
 ## Heroku
 
-[[The Data Restaurateurs Heroku Link](https://the-data-restaurateurs.herokuapp.com/)] We were able to deploy our app to Heroku.
+**[The Data Restaurateurs Heroku Link](https://the-data-restaurateurs.herokuapp.com/)** We were able to deploy our app to Heroku.
 
 ## Lessons Learned
 
