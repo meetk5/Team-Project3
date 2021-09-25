@@ -152,9 +152,14 @@ To Deploy our Flask App, please follow the below steps :
 
 ## Lessons Learned
 
-
+- One of the biggest challenges in this project was to deploy our website on Heroku. Since our data had around 43k rows of data, we had to reduce our dataset to 7k entries to deploy on Heroku. Since we were deploying this on Heroku for the first time, we learned many new things like importing correct libraries, modifying flask, connecting to Heroku's database, and ensuring that your data is under 10k records.
+- While establishing a connection with Flask using SQL Alchemy, we faced an error because we had not defined the primary key in our violations table.
+- When we removed all null values from our violations dataset, For loop in our JavaScript was throwing an error as it was missing an iterable element.
+- In our "Restaurant Finder" webpage, we were not able to see layers for map objects because of null values in our data which break the chain of the codes. As we had 7873 restaurants appear on the map, we are not able to see the borough colors clearly, especially for Manhattan. Because number of the restaurants, zoom in and out functions don't work properly and distorts popups for such a big number. It takes time for map to reform back.
 
 ## Inspirations
+
+
 
 ## **Team Members**
 
