@@ -1,6 +1,6 @@
 # The Data Restaurateurs - Restaurant Finder NYC
 
-![grouplogo]()
+![grouplogo](https://github.com/meetk5/Team-Project3/blob/main/Images/logo.png)
 
 [[The Data Restaurateurs Heroku Link](https://the-data-restaurateurs.herokuapp.com/)]
 
@@ -83,15 +83,15 @@ We later deployed flask app to run our visualization on local server.
 
 - The Landing Page is responsive and has four icon images linked to other pages. Each icon expands on hover. These icons are "**Find Restaurants**", "**NYC Cuisines**", "**Restaurant Violations**" and a surprise "**Food Fortune**".
 
-  ![homepageimage]()
+  ![homepageimage](https://github.com/meetk5/Team-Project3/blob/main/Images/homepage.jpg)
 
 - Each visualization page has a navbar that will indicate what the active page is. The navbar also has an image of the logo.
 
-  ![navbarimage]()
+  ![navbarimage](https://github.com/meetk5/Team-Project3/blob/main/Images/navbar.jpg)
 
 - Each page has a favicon that will appear in the browser tab
 
-  ![faviconimage]()
+  ![faviconimage](https://github.com/meetk5/Team-Project3/blob/main/Images/faviconscreenshot.jpg)
 
 ## Visualizations & Analysis
 
@@ -101,7 +101,7 @@ We created several visualizations for our website using JavaScript libraries lik
 
 We used D3, Openstreetmap & Leaflet to create and plot markers of restaurant locations in NYC based on Latitude and Longitude details. We also created a borough layer in our map that assigns different colors to each borough and helps in distinguishing better. We created popups on each location pin that would display the restaurant's name, cuisine info, contact number, and borough details.
 
-![restfinder]()
+![restfinder](https://github.com/meetk5/Team-Project3/blob/main/gifs/NYC-Restaurant-Inspections%20restaurant%20finder.gif)
 
 ### NYC Cuisines
 
@@ -113,7 +113,7 @@ Upon exploring each borough, we see that Manhattan has the greatest number of re
 
 For each borough, you can also see the top 5 violations.
 
-![cuisines]()
+![cuisines](https://github.com/meetk5/Team-Project3/blob/main/gifs/NYC-Restaurant-Inspections.gif)
 
 ### Restaurant Violations
 
@@ -121,7 +121,7 @@ To be consistent with our design throughout our website, we decided to keep the 
 
 Since our data had two separate fields which explained the violation code and their detailed description, we have provided a legend-style table that mentions all the violations in detail for each violation code. We incorporated Plotly's "**plotly-click**" function to make this page more interactive by displaying the list of 20 restaurants when users click on any of the violation code bars in the bar graph.
 
-![violation]()
+![violation](https://github.com/meetk5/Team-Project3/blob/main/gifs/Violation-Data.gif)
 
 ### Food Fortune
 
@@ -129,7 +129,7 @@ We created this fun section on our website which helps users when they are facin
 
 There is a cuisine dropdown on the right of the fortune wheel visualization where you can select cuisine and it'll recommend you 5 restaurants based on your cuisine selection.
 
-![foodfortune]()
+![foodfortune](https://github.com/meetk5/Team-Project3/blob/main/gifs/Other-Graphs.gif)
 
 ## Run Flask
 
