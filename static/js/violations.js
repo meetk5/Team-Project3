@@ -130,7 +130,7 @@ function visualization(boro) {
                 size: 18
             },
             hovermode: 'closest',
-            title: `Violation details among ${boro} restaurants`,
+            title: `Violation Details among ${boro} Restaurants`,
             xaxis: { title: "Violation Codes" },
             yaxis: { title: "Nos. of Violations" }
         };
